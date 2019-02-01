@@ -28,6 +28,13 @@
         </div>
         <div class="border-bottom-gray accent-padding-tb">
           <p class="nmt"><b>Color</b></p>
+          <img src="{{'navy.png' | asset_url}}" class="collection-color" id="navy" />
+          <img src="{{'aqua.png' | asset_url}}" class="collection-color" id="aqua" />
+          <img src="{{'coral.png' | asset_url}}" class="collection-color" id="coral" />
+          <img src="{{'gray.png' | asset_url}}" class="collection-color" id="gray" />
+          <img src="{{'white.png' | asset_url}}" class="collection-color border-gray" id="white" />
+          <img src="{{'black.png' | asset_url}}" class="collection-color" id="black" />
+
         </div>
         <div class=" accent-padding-tb">
           <p class="nmt"><b>Style</b></p>
@@ -51,13 +58,18 @@
               <div class="product-collection accent-padding">
               <a href="{{ product.url | within: collection }}">
                 {% for image in product.images limit: 1 %}
-                  <img src="{{ image | product_img_url }}"/>
+                  <img src="{{ image | product_img_url: '300x300' }}"/>
                 {% endfor %}
               </a>
               <a href="{{ product.url | within: collection }}">
-                <p class="nm"><b>{{ product.title }}</b></p>
+                <p class=""><b>{{ product.title }}<br>{{product.type}}</b></p>
               </a>
-              <p class="nm">{{ product.price }}</p>
+              <p class="">
+                {% if product.compare_at_price_max %} 
+                  <span class="strike-through">{{ product.compare_at_price | money }}</span> 
+                {% endif %}
+                {{ product.price | money }} 
+              </p>
             </div>
           {% endfor %} 
         </div>
