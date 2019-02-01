@@ -184,8 +184,25 @@
 <script>
   $('form').change(function() {
     $('#color-selected').text("{%for variant in product.variants%} {% if variant.selected %}{{variant.title | truncatewords: 1, ""}}{%endif%}{%endfor%}")
-    console.log('hit')
   })
+  $(document).ready(function() {
+    $("[data-value='Small'] label").click(function () {
+      $('.small-icon').attr("src", "//cdn.shopify.com/s/files/1/0117/0597/4884/t/6/assets/filled-paca.png?1079638347607270882")
+      $('.medium-icon, .large-icon').attr("src", "//cdn.shopify.com/s/files/1/0117/0597/4884/t/6/assets/stroke-paca.png?1079638347607270882" ); 
+    })
+    $("[data-value='Medium'] label").click(function () {
+      $('.medium-icon').attr("src", "//cdn.shopify.com/s/files/1/0117/0597/4884/t/6/assets/filled-paca.png?1079638347607270882")
+      $('.small-icon, .large-icon').attr("src", "//cdn.shopify.com/s/files/1/0117/0597/4884/t/6/assets/stroke-paca.png?1079638347607270882" ); 
+    })
+    $("[data-value='Large'] label").click(function () {
+      $('.large-icon').attr("src", "//cdn.shopify.com/s/files/1/0117/0597/4884/t/6/assets/filled-paca.png?1079638347607270882")
+      $('.medium-icon, .small-icon').attr("src", "//cdn.shopify.com/s/files/1/0117/0597/4884/t/6/assets/stroke-paca.png?1079638347607270882" ); 
+    })
+  }); 
+  $("[data-value='Small'] label").html("<img src='//cdn.shopify.com/s/files/1/0117/0597/4884/t/6/assets/stroke-paca.png?1079638347607270882' class='small-icon' />")
+    $("[data-value='Medium'] label").html("<img src='//cdn.shopify.com/s/files/1/0117/0597/4884/t/6/assets/stroke-paca.png?1079638347607270882' class='medium-icon' />")
+  $("[data-value='Large'] label").html("<img src='//cdn.shopify.com/s/files/1/0117/0597/4884/t/6/assets/stroke-paca.png?1079638347607270882' class='large-icon' />")
+
 </script>
 <script text="text/javascript">
   var _learnq = _learnq || [];
