@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head> 
+    <style>.async-hide { opacity: 0 !important} </style>
+    <script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
+                                         h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
+                                         (a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+                                        })(window,document.documentElement,'async-hide','dataLayer',4000,
+                                            {'GTM-5NSXTXW':true});</script>
+   
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow, archive">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    {% assign maxmeta = 155 %}
+    {% if template contains 'product' %}
+    {% if template == 'collection' %}
+    <meta name="description" content="{{ collection.description | strip_html | strip_newlines | truncate: maxmeta | escape }}">
+    {% else %}
+    <meta name="description" content="{{ product.description | strip_html | strip_newlines | truncate: maxmeta | escape }}">
+    {% endif %}
+    {% elsif page_description %}
+  <meta name="description" content="{{ page_description | escape }}">
+   <meta property="og:image" content="{{preview.png | asset_url}}" />
+
+ 
+    {% else %}
+    <meta name="description" content="{{ shop.description }}">
+   <meta property="og:image" content="{{preview.png | asset_url}}" />
+
+    {% endif %}
+    <meta name="keywords" content="">
+    <title>{% if template == 'index' %}Pacas™ {% elsif template == '404' %}Page Not Found | {{ shop.name }}{% else %}{{ page_title }}{% endif %}</title>
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="icon" type="image/png" href="{{ 'favicon.png' | asset_url }}">
+    
+    {{ 'style.css' | asset_url | stylesheet_tag }}
+    <script type="text/javascript" src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=ueKycW"></script>
+    <script src="{{'klaviyo.js' | asset_url}}" ></script>
+    <script src="{{ 'jquery.min.js' | asset_url }}" ></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js" async=""></script>
+    <script src="{{ 'custom.jquery.js' | asset_url }}" defer></script>
+    <script src="{{  'main.js' | asset_url }}" defer></script>
+    <script src="{{  'option_selection.js' | shopify_asset_url }}" defer></script>
+    <script src="{{ 'ajax-cart.js'  | asset_url }}" defer></script>
+    <script src="{{ 'modernizr.min.js' | asset_url }}" defer></script>
+    <script src="{{ 'handlebars.min.js' | asset_url }}" defer></script>
+    <script src="{{ 'jquery.easing.1.3.min.js' | asset_url }}" defer></script>
+    <script src="{{'jquery.mobile.custom.min.js' | asset_url}}" defer></script> 
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" defer />
+<script src="{{'lazysizes.min.js' | asset_url}}" async=""></script>
+
+
+    {% include 'ajax-cart-template' %}
+    <script async>
+      jQuery(function($) {
+        ajaxCart.init({
+          formSelector: 'form[action="/cart/add"]',
+          cartContainer: '#CartContainer',
+          addToCartSelector: '[type="submit"]',
+          cartCountSelector: '.cart span',
+          cartCostSelector: '#CartCost',
+          moneyFormat: {{ shop.money_format | json }}
+        });
+        });
+
+        jQuery(document.body).on('afterCartLoad.ajaxCart', function(evt, cart) {
+          timber.RightDrawer.open();
+        });
+    </script>
+    <div id="CartContainer" >
+    </div>
+ 
+    <script src="{{  'api.jquery.js' | shopify_asset_url }}" async></script>
+
+    {% if template contains 'customers' %}
+    {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+    {{ 'customer_area.js'  | shopify_asset_url | script_tag }}
+    {% endif %}
+    <script type="text/javascript">
+      var global_money_format = '{{ shop.money_format }}';
+    </script>
+    {% include 'head-fb-open-graph' %}
+    {{ content_for_header }}
+
+    {% comment %}Klaivyo{% endcomment %}
+    <script type="text/javascript">
+  var _learnq = _learnq || [];
+
+  _learnq.push(['account', 'pk_c257ee3a5e3b40251891c2148e1e6c4824']);
+
+  (function () {
+  var b = document.createElement('script'); b.type = 'text/javascript'; b.async = true;
+  b.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'a.klaviyo.com/media/js/analytics/analytics.js';
+  var a = document.getElementsByTagName('script')[0]; a.parentNode.insertBefore(b, a);
+  })();
+  </script>
+
+  
+  {% section 'header' %}
+
+    {{ content_for_layout }}
+
+  {% section 'footer' %}
+
+    
+       <script>jQuery(function(){jQuery(".swatch :radio").change(function(){var t=jQuery(this).closest(".swatch").attr("data-option-index"),e=jQuery(this).val();jQuery(this).closest("form").find(".single-option-selector").eq(t).val(e).trigger("change")})});</script>
+    
+    {% include 'remove-sold-out' %}
+    {% include 'linked-options' %}
+        
+    <script>$("#referafriend").click(function(){/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)?document.getElementById("k_id_modal").style.display="inline-block":document.getElementById("desktop_refer_k").style.display="inline-block"});</script>
+
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({
+  duration: 600,
+})
+  </script>
+<input class="js-form-discount" type="hidden" name="discount" value="" style="display: none;" >
+
+  </body>
+</html>

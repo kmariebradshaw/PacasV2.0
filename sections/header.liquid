@@ -1,0 +1,38 @@
+{% schema %}
+  {
+    "name": "Section name",
+    "settings": []
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+
+ <nav class="fw do flex-container" id="dnav">
+  <div class="flex-container jes">
+    <a href="/collections/mens"><p class="ib">Men</p></a>
+    <a href="/collections/womens"><p class="ib">Women</p></a>
+    <a href="/collections/kids"><p class="ib">Kids</p></a>
+  </div>
+  <a href="/"><img src="{{'pacas.png' | asset_url}}"  class="jlogo"/></a>
+  <div class="flex-container jes">
+    <a href="/pages/our-story"><p class="ib">Our Story</p></a>
+    <a href="/pages/live-feed"><p class="ib">Live Feed</p></a>
+    <a href="/cart" style="z-index: 999;"><img src="{{'cart.png' | asset_url}}"class="cart-icon" /></a>
+  </div> 
+ </nav> 
+
+ <nav class="fw mo jes tac" id="dnav">
+  <div id="hamburger">
+    <span></span>
+    <span></span> 
+    <span></span>
+    <span></span>
+  </div>
+  <img src="{{'pacas.png' | asset_url}}"  class="jlogo"/>
+  <img src="{{'cart.png' | asset_url}}" id="mobile-cart"/>
+ </nav> 
+ 
