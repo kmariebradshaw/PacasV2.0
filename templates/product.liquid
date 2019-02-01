@@ -3,12 +3,12 @@
   <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
   <meta itemprop="image" content="{{ product.featured_image.src | product_img_url: 'grande' }}">
    
-<section class="flex-container double-padding">
+<section class="flex-container accent-padding">
     <div class="half accent-padding">
       <div class="flex-container-no jcc">
         <div class="left-arrow"><p class="large">⌃</p></div>
         <div>
-          <img src="{{ featured_image.src | img_url: '2000x2000' }}" alt="{{ image.alt | escape }}" class="fw">
+          <img src="{{ product.featured_image.src | img_url: '2000x2000' }}" alt="{{ image.alt | escape }}" class="fw">
           {% if product.images.size > 1 %}
             {% for image in product.images %}
               <div class="circle"></div>
@@ -21,40 +21,39 @@
     </div>
     <div class="half tac accent-padding">
       <h3>{{ product.title }}</h3>
-  
-  <!--  -->
-
-<form action="/cart/add" method="post" id="product-form-{{ product.id }} t" class="checkout" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
- 
- 
-  
-  {% if product.available and product.variants.size > 1 %}
-    {% include 'swatch' with 'Color' %}
-  {% endif %} 
-  {% if product.available %}
-    <meta itemprop="priceCurrency" content="{{ shop.currency }}">
-    <link itemprop="availability" href="http://schema.org/InStock">
-    
-   <select name="id" id="productSelect-{{ product.id }}" class="product-single__variants" style="display: none;">
-      {% for variant in product.variants %}
-        <option data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
-      {% endfor %}
-   </select>
-   <select name="quantity" id="quantity">
-     {% for i in (1..10) %}
-     <option value="{{ i }}">{{ i }}</option>
-     {% endfor %}         
-  </select>  
-  {% if product.title == "Gift Cards" %}
-    <div class="spacer"></div>
-  {% else %}
-    <p class="subscript clickable" id="size-chart"><img src="{{'ruler.png' | asset_url}}" class="ruler-icon"/>sizing chart</p>
-  {% endif %}
-  <p class="priceu subscript" id="discount-at-checkout" style="display: none;"><span>*discount applied at checkout</span></p>
-  <button type="submit" name="add" id="add-to-cart-{{ product.id }} add-cart" class="background-green text-white"><span>add to cart</span></button>
-  {% endif %}
-</form>
-</div>
+    <form action="/cart/add" method="post" id="product-form-{{ product.id }} t" class="checkout" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+      <div class="tac fw">
+        {%for variant in product.variants %}
+          {% if variant.selected %}
+            <p class="tac subscript">Color: <span id="color-selected">{{variant.title | truncatewords: 1, ""}}</span></p>
+          {% endif %}
+        {% endfor %}
+    {% if product.available and product.variants.size > 1 %}
+  {% for option in product.options %}
+    {% include 'swatch' with option %}
+  {% endfor %}
+{% endif %}
+    </div>
+      {% if product.available %}
+        <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+        <link itemprop="availability" href="http://schema.org/InStock">
+        
+       <select name="id" id="productSelect-{{ product.id }}" class="product-single__variants" style="display: none;">
+          {% for variant in product.variants %}
+            <option data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
+          {% endfor %}
+       </select>
+       <select name="quantity" id="quantity">
+         {% for i in (1..10) %}
+         <option value="{{ i }}">{{ i }}</option>
+         {% endfor %}         
+      </select>  
+      <br>
+      <button type="submit" name="add" id="add-to-cart-{{ product.id }} add-cart" class="background-gray text-white add-to-cart"><span>Add to Cart</span></button>
+      <p class="subscript clickable" id="size-chart"><b>See Size Guide</b></p>
+      {% endif %}
+    </form>
+  </div>
 </section>
 
 <div style="display: none;" id="display-size" class="sizing-chart border-lightgray modal">
@@ -99,16 +98,6 @@
  
 {% if product.available %}
 <script>
-    $('.swatch').prepend("<p id='color-label'>color:</p>")
-   $('.scrollp').on("click", function() { 
-    var wrapper = $('.shoe-wrapper'); 
-    if ($(this).hasClass('rightp')) { 
-      $(wrapper).animate( { scrollLeft: '+=300' })
-    }
-    else {
-      $(wrapper).animate({scrollLeft: '-=300'});  
-    }
-  }); 
   var selectCallback_{{ product.id }} = function(variant, selector) {
 
     // BEGIN SWATCHES
@@ -145,12 +134,6 @@
   });
 </script>
 {% endif %}
-
- 
-
-<!--  -->
-
-
    <section class="product-benefits background-blue flex-container">
     <div class="third">
     </div>
@@ -199,31 +182,10 @@
   <img src="{{'life-feed-preview.png' | asset_url}}" />
 </section>
 <script>
-  $('.color').change(function() {
-    if ("{{product.title}}" == "Heels & Wedges") {
-      if ($(this).hasClass('nude')) {
-        var src = "//cdn.shopify.com/s/files/1/0424/0893/products/Nude_Heel_3_2000x2000.jpg?v=1529528675"
-        $('#featured-image').attr("src", src)
-        }
-      else if ($(this).hasClass('black')) {
-        $('#featured-image').attr("src","//cdn.shopify.com/s/files/1/0424/0893/products/Womens_BlackHeel_2000x2000.jpg?v=1529528675")
-      }
-    }
-    else if ("{{product.title}}" == "Ballet Flats") {
-      if ($(this).hasClass('nude')) {
-        $('#featured-image').attr("src","//cdn.shopify.com/s/files/1/0424/0893/products/Nude_Flat_Bare_2000x2000.jpg?v=1529418978")
-      }
-      else if ($(this).hasClass('black')) {
-        $('#featured-image').attr("src","//cdn.shopify.com/s/files/1/0424/0893/products/Black_Flat2_2000x2000.jpg?v=1529418978")
-      }
-    }
-    $('.product-image').each(function() {
-      if ($(this).attr("src").replace("compact", "2000x2000") == $('#featured-image').attr("src")) {
-  $(this).addClass('border-lightgray').parent().siblings().children().removeClass('border-lightgray'); 
-      }
-    }); 
+  $('form').change(function() {
+    $('#color-selected').text("{%for variant in product.variants%} {% if variant.selected %}{{variant.title | truncatewords: 1, ""}}{%endif%}{%endfor%}")
+    console.log('hit')
   })
-    
 </script>
 <script text="text/javascript">
   var _learnq = _learnq || [];

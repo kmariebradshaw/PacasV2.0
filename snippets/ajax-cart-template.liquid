@@ -3,7 +3,7 @@
  <script id="CartTemplate" type="text/template">
 {% raw %}
 <section class="accent-padding">
-  <a href="/cart"><h3 class="ib">Your Cart</h3></a>
+  <a href="/cart"><h3 class="tac accent">Your Cart</h3></a>
   <h3 id="close-cart" onclick="cartClose();">✕</h3>
   <form action="/cart" method="post" novalidate class="border-lightgray ajaxcart  accent-padding">
     <div id="product-wrap">
@@ -35,7 +35,7 @@
         </div>
    
       <div class="ajaxcart__footer index-padding-to">
-        <p class="tac"><span>Subtotal: {{{totalPrice}}}</span></p>
+        <p>Subtotal: {{{totalPrice}}}</p>
         <p id="cart-add-ons" class="subscript tac">
          </p>
 
@@ -46,6 +46,10 @@
         <button type="submit" class="btn btn--secondary btn--full cart__checkout btn clickable" name="checkout" style="margin-top: 0.5em;">
           {% endraw %}Checkout{% raw %}
         </button>
+        {% endraw %}
+        <div class="tac">
+          <img src="{{'bow.png' | asset_url}}" class="icon" /><p class="subscript">Want to donate socks? <b>Donate here.</b></p>{% raw %}
+        </div>
       </div>
     </form>
   </section>
