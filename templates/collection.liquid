@@ -1,47 +1,79 @@
- <main>
-  <div class="fw accent-padding">
-    {% if collection.title == "Men" %}
-     <div class="flex-container collections-grid clickable">
-        <div class="half" id="shop-mens-loafers"><h2><a href="/products/loafer-version" class="text-white">Shop Loafers</a></h2></div>
-        <div class="half" id="shop-mens-sneakers"><h2><a href="/products/sneaker-version" class="text-white">Shop Sneakers</a></h2></div>
+ <main id="c{{ collection.id }}" class="collection">
+    <section class="page-header flex-container-no">
+      <div class="half"></div>
+      <div class="half">
+        <h2 class="tac">{{collection.title}} Socks</h2>
+        <p class="tac">Want to donate some socks to a local hospital?<br>Click <b>here</b> to pickout Paca styles</p>
       </div>
-    {% else %}
-      <div class="flex-container collections-grid clickable">
-        <div class="half" id="shop-flats"><h2><a href="/products/flats-version" class="text-white">Shop Flats</a></h2></div>
-        <div class="half" id="shop-sneakers"><h2><a href="/products/womens-sneaker-version" class="text-white">Shop Sneakers</a></h2></div>
+    </section>
+    <section class="flex-container" id="collection-wrapper">
+      <div class="quarter double-padding">
+        <div class="border-bottom-gray accent-padding-tb">
+          <h3 class="nm">{{collection.title}}</h3>
+        </div>
+        <div class="border-bottom-gray accent-padding-tb">
+          <p class="nmt"><b>Pack Size</b></p>
+          <div class="flex-container-no" id="single">
+            <div class="collection-circle"></div>
+            <p class="nm">Single</p>
+          </div>
+          <div class="flex-container-no" id="four-pack">
+            <div class="collection-circle"></div>
+            <p class="nm">4 - Pack</p>
+          </div>
+          <div class="flex-container-no" id="eight-pack">
+            <div class="collection-circle"></div>
+            <p class="nm">8 - Pack</p>
+          </div>
+        </div>
+        <div class="border-bottom-gray accent-padding-tb">
+          <p class="nmt"><b>Color</b></p>
+          <img src="{{'navy.png' | asset_url}}" class="collection-color" id="navy" />
+          <img src="{{'aqua.png' | asset_url}}" class="collection-color" id="aqua" />
+          <img src="{{'coral.png' | asset_url}}" class="collection-color" id="coral" />
+          <img src="{{'gray.png' | asset_url}}" class="collection-color" id="gray" />
+          <img src="{{'white.png' | asset_url}}" class="collection-color border-gray" id="white" />
+          <img src="{{'black.png' | asset_url}}" class="collection-color" id="black" />
+
+        </div>
+        <div class=" accent-padding-tb">
+          <p class="nmt"><b>Style</b></p>
+          <div class="flex-container-no" id="athletic">
+            <div class="collection-circle"></div>
+            <p class="nm">Athletic</p>
+          </div>
+          <div class="flex-container-no" id="casual">
+            <div class="collection-circle"></div>
+            <p class="nm">Casual</p>
+          </div>
+          <div class="flex-container-no" id="dress">
+            <div class="collection-circle"></div>
+            <p class="nm">Dress</p>
+          </div>
+        </div>
       </div>
-      <div class="flex-container collections-grid clickable">
-        <div class="half" id="shop-loafers"><a href="/products/womens-loafer-version" class="text-white"><h2>Shop Loafers</h2></a></div>
-        <div class="half" id="shop-heels"><a href="/products/heels" class="text-white"><h2>Shop Heels</h2></a></div>
+      <div class="three-fourths">
+        <div class="flex-container double-padding">
+          {% for product in collection.products %}
+              <div class="product-collection accent-padding">
+              <a href="{{ product.url | within: collection }}">
+                {% for image in product.images limit: 1 %}
+                  <img src="{{ image | product_img_url: '300x300' }}"/>
+                {% endfor %}
+              </a>
+              <a href="{{ product.url | within: collection }}">
+                <p class=""><b>{{ product.title }}<br>{{product.type}}</b></p>
+              </a>
+              <p class="">
+                {% if product.compare_at_price_max %} 
+                  <span class="strike-through">{{ product.compare_at_price | money }}</span> 
+                {% endif %}
+                {{ product.price | money }} 
+              </p>
+            </div>
+          {% endfor %} 
+        </div>
       </div>
-    {% endif %}
-</div>
-  <section class="fw endorsements-features" id="featured">   
-    <ul class="background-beige">
-      <li><p>endorsed by</p></li>
-      {% if collection.title == "Men" %}
-        {% include 'endorsed_by_m' %}
-      {% else %}
-        {% include 'endorsed_by_w' %} 
-      {% endif %} 
-    </ul>
-  </section>
-  <section id="key-features" class="index-padding">
-    <div class="title-border"></div>
-    <h2>Give Gekks a Go</h2>
-    <ul class="icon-display">
-      <li><img src="{{'sweat.svg' | asset_url}}" alt="Sweat Reducing"/><br><span class="text-green">stench control</span><br><p class="subscript">antimicrobial yarn eliminates the sockless stench</p></li> 
-      <li class="do"><img src="{{'comfortable.svg' | asset_url}}" alt="Comfortable" /><br><span class="text-green">comfortable</span><br><p class="subscript">55% polyester, 39% nylon, 6% silver coated nylon</p></li> 
-      <li><img src="{{'longlasting.svg' | asset_url}}" alt="Long Lasting" /><br><span class="text-green">long lasting</span><p class="subscript">adhesive pads come with two layers to make your Gekks and your soles last longer</p></li> 
-    </ul>
-    <ul class="icon-display">
-      <li><img src="{{'convenient.svg' | asset_url}}" alt="Convenient"/><br><span class="text-green">convenient</span><p class="subscript">slip in and out barefoot using our patented fastening system</p></li> 
-      <li class="do"><img src="{{'ecofriendly.svg' | asset_url}}" alt="Eco-Friendly"/><br><span class="text-green">eco-friendly</span><p class="subscript">REPREVE yarn to help you reduce your carbon footprint</p></li> 
-      <li><img src="{{'fashionforward.svg' | asset_url}}" alt="Fashion Forward"/><br><span class="text-green">fashion forward</span><p class="subscript">rock that sockless style with all your shoe choices</p></li> 
-    </ul>
-    <ul class="icon-display mo">
-      <li><img src="{{'ecofriendly.svg' | asset_url}}" alt="Eco-Friendly"/><br><span class="text-green">eco-friendly</span><p class="subscript">REPREVE yarn, made from recycled bottles, to help you reduce your carbon footprint</p></li> 
-      <li><img src="{{'comfortable.svg' | asset_url}}" alt="Comfortable" /><br><span class="text-green">comfortable</span><br><p class="subscript">55% polyester, 39% nylon, 6% silver coated nylon</p></li> 
-    </ul>
-  </section>
+    </section>
+  </div>
 </main>
