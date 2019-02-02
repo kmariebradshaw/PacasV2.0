@@ -20,7 +20,7 @@
       <p class="tac">{{ product.description }}</p>
     </div>
     <div class="half tac accent-padding">
-      <h3>{{ product.title }}</h3>
+      <h3 class="nmb">{{ product.title }}</h3>
     <form action="/cart/add" method="post" id="product-form-{{ product.id }} t" class="checkout" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
       <div class="tac fw">
         {%for variant in product.variants %}

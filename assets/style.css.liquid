@@ -534,6 +534,7 @@ body section #shaver.rotate { transform: rotate(-10deg); }
   background-size: cover;
 }
 /*product pages*/
+.large label { margin-left: -5px; }
 .product-benefits { 
   background-image: url("{{'alapcabutter.png' | asset_url}}");
   background-position: bottom left;
@@ -615,17 +616,16 @@ body section #shaver.rotate { transform: rotate(-10deg); }
   white-space:nowrap;
   text-transform:uppercase;
 }
-.swatch-element label { padding:0 10px; }
 .color.swatch-element label { padding:0; }
 /* Styling selected swatch */
 /* Slightly raised */
-.swatch input:checked + label {
+.swatch .color input:checked + label {
   -webkit-box-shadow:0px 1px 2px rgba(0,0,0,0.8);
   -moz-box-shadow:0px 1px 2px rgba(0,0,0,0.8);
   box-shadow:0px 1px 2px rgba(0,0,0,0.8);
   border-color:transparent;
 } 
-.swatch .swatch-element {
+.swatch .swatch-element.color {
 
   -webkit-transform:translateZ(0); /* webkit flicker fix */
   -webkit-font-smoothing:antialiased; /* webkit text rendering fix */
@@ -633,8 +633,8 @@ body section #shaver.rotate { transform: rotate(-10deg); }
   margin:0px 10px 10px 0;
   /* To position the sold out graphic and tooltip */
   position:relative;
-  display: inline-block;
 }
+.swatch .swatch-element { display: inline-block; }
 /* Image with the cross in it */
 .crossed-out { position:absolute; width:100%; height:100%; left:0; top:0; }
 .swatch .swatch-element .crossed-out { display:none; }
