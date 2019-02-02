@@ -2,76 +2,138 @@
   <meta itemprop="name" content="{{ product.title }}">
   <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
   <meta itemprop="image" content="{{ product.featured_image.src | product_img_url: 'grande' }}">
-    {% unless product.title == "Gift Cards" or product.title == "Select" %}
-  <section class="flex-container-no background-green mo-plus accent-padding fw tac">
-            {% capture product_collection_url %}{{ product.url | within: collection }}{% endcapture %}
-            {% for collection in product.collections %}
-              {% if collection.title == "Women"%}
-                {% for link in linklists.product-sub-nav1.links %}
-                  {% unless link.url == product_collection_url %}
-                    <a href="{{ link.url }}" class="accent-padding subscript" id="sub-nav" onclick="ga('send', 'event', 'Product', 'Click', 'Green Sub Nav');">{{ link.title | escape }}</a>
-                  {% endunless %}
-                {% endfor %}
-              {% elsif collection.title == "Men" %}
-                {% for link in linklists.product-sub-nav1-men.links %}
-                  {% unless link.url == product_collection_url%}
-                    <a href="{{ link.url }}" class="accent-padding subscript" id="sub-nav" onclick="ga('send', 'event', 'Product', 'Click', 'Green Sub Nav');">{{ link.title | escape }}</a>
-                  {% endunless %}
-                {% endfor %}
-              {% endif %}
+   
+<section class="flex-container accent-padding">
+    <div class="half accent-padding">
+      <div class="flex-container-no jcc">
+        <div class="left-arrow"><p class="large">⌃</p></div>
+        <div>
+          <img src="{{ product.featured_image.src | img_url: '2000x2000' }}" alt="{{ image.alt | escape }}" class="fw">
+          {% if product.images.size > 1 %}
+            {% for image in product.images %}
+              <div class="circle"></div>
             {% endfor %}
-    {% endunless %}
-  </section>
-  <section id="product-images">
-     {% unless product.title == "Gift Cards" %}
-        <div id="thumbnails" class="ndo-plus">
-          <ul>
-            {% for image in product.images limit: 1 %}
-            <li><img data-src="{{ image | product_img_url: 'compact' }}" class="border-lightgray" class="product-image lazyload"/></li>
-            {% endfor %}
-            {% for image in product.images limit: 5 offset: 2 %}
-            <li><img data-src="{{ image | product_img_url: 'compact' }}" class="product-image lazyload"/></li>
-            {% endfor %} 
-          </ul>
-        </div>
-      {% endunless %} 
-      {% if product.type == "Closet Pack"%}
-      <div class="mo-plus fw" id="moprice"><h3 class="tac nmb">{{ product.price | money }} <span style="text-decoration: line-through; color: gray;">{% if productq.price < product.compare_at_price_max and product.type == "Closet Pack" %}{{ product.compare_at_price | money }}{% endif %}</span></h3>
-        {% if product.title == "Women's Closet Pack" %}
-          <p class="subscript tac nmt">Save $5 when you buy a closet pack!</p>
-        {% elsif product.title == "Men's Closet Pack" %}
-          <p class="subscript tac nmt">Save $4 when you buy a closet pack!</p>
-        {% endif %}
-      </div>
-      {% endif %}
-      <div class="mo-plus fw">
-        <div class="priceu" style="display: none;">
-          <img src="{{'winterspecial.png' | asset_url}}" style="width: 300px; display: block; margin: 0 auto;" />
-        {% if product.title == "Women's Closet Pack" %}
-          <h3 class="tac nmb">$36.00 <span style="text-decoration: line-through; color: gray;">{% if product.price < product.compare_at_price_max %}$49.00{% endif %}</span></h3>
-        {% else %}
-          <div class="flex-container-no">
-          <h3 class="tar" style="width: 56%; margin-right: 10px">$18.00 <span class="subscript" style="font-weight: 300; margin: 0 5px;">or</span> $12.00 </h3><span class="subscript" style="font-weight: 300;">when you buy 3 <br>or more pairs</span>
-        </div>
           {% endif %}
         </div>
+        <div class="right-arrow"><p class="large">⌃</p></div>
       </div>
-      <img data-src="{{ product.featured_image.src | product_img_url: '2000x2000' }}" alt="{{ product.title }}" id="featured-image" class="lazyload"/>
-      {% unless product.title == "Gift Cards" %}
-        <div id="thumbnails" class="mo-plus" style="display: none;">
-          <ul>
-            {% for image in product.images limit: 1 %}
-            <li><img data-src="{{ image | product_img_url: 'compact' }}" class="border-lightgray product-image lazyload"/></li>
-            {% endfor %}
-            {% for image in product.images limit: 5 offset: 2 %}
-            <li><img data-src="{{ image | product_img_url: 'compact' }}" class="product-image lazyload"/></li>
-            {% endfor %} 
-          </ul>
-        </div>
-        {% endunless %}
-  </section>
-  
-  {% include 'product-add-to-cart' %}
+      <p class="tac">{{ product.description }}</p>
+    </div>
+    <div class="half tac accent-padding">
+      <h3 class="nmb">{{ product.title }}</h3>
+    <form action="/cart/add" method="post" id="product-form-{{ product.id }} t" class="checkout" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+      <div class="tac fw">
+        {%for variant in product.variants %}
+          {% if variant.selected %}
+            <p class="tac subscript">Color: <span id="color-selected">{{variant.title | truncatewords: 1, ""}}</span></p>
+          {% endif %}
+        {% endfor %}
+    {% if product.available and product.variants.size > 1 %}
+  {% for option in product.options %}
+    {% include 'swatch' with option %}
+  {% endfor %}
+{% endif %}
+    </div>
+      {% if product.available %}
+        <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+        <link itemprop="availability" href="http://schema.org/InStock">
+        
+       <select name="id" id="productSelect-{{ product.id }}" class="product-single__variants" style="display: none;">
+          {% for variant in product.variants %}
+            <option data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
+          {% endfor %}
+       </select>
+       <select name="quantity" id="quantity">
+         {% for i in (1..10) %}
+         <option value="{{ i }}">{{ i }}</option>
+         {% endfor %}         
+      </select>  
+      <br>
+      <button type="submit" name="add" id="add-to-cart-{{ product.id }} add-cart" class="background-gray text-white add-to-cart"><span>Add to Cart</span></button>
+      <p class="subscript clickable" id="size-chart"><b>See Size Guide</b></p>
+      {% endif %}
+    </form>
+  </div>
+</section>
+
+<div style="display: none;" id="display-size" class="sizing-chart border-lightgray modal">
+  <div class="accent-padding">
+   <p class="nm klaviyo_header_close tar clickable">✕</p>
+  <table>
+    <tr>
+      <th colspan="2" class="blank-row"></th>
+      <th class="t-size table-title">small</th>
+      <th class="t-size table-title">medium</th>
+      <th class="t-size table-title">large</th>
+    </tr>
+    <tr class="lg">
+      <td rowspan="2" class="table-title"><span>mens</span></td>
+      <td class="table-title lg">US</td>
+      <td>6.5-8</td>
+      <td>8.5-11</td>
+      <td>11.5+</td>
+    </tr>
+    <tr class="dg">
+      <td class="table-title">UK</td>
+      <td>39-41</td>
+      <td>42-44</td>
+      <td> 44+ </td>
+    </tr>
+    <tr class="lg">
+      <td rowspan="2" class="table-title"><span>womens</span></td>
+      <td class="table-title lg">US</td>
+      <td>5-6.5</td>
+      <td>7-8.5</td>
+      <td>9-11.5</td>
+    </tr>
+    <tr class="dg">
+      <td class="table-title">UK</td>
+      <td>35-37</td>
+      <td>38-39</td>
+      <td>40-42</td>
+    </tr>
+  </table>
+</div>
+</div>
+ 
+{% if product.available %}
+<script>
+  var selectCallback_{{ product.id }} = function(variant, selector) {
+
+    // BEGIN SWATCHES
+    if (variant) {
+      var form = jQuery('#' + selector.domIdPrefix).closest('form');
+      for (var i=0,length=variant.options.length; i<length; i++) {
+        var radioButton = form.find('.swatch[data-option-index="' + i + '"] :radio[value="' + variant.options[i] +'"]');
+        if (radioButton.size()) {
+          radioButton.get(0).checked = true;
+        }
+      }
+    }
+    // END SWATCHES
+    timber.productPage({
+      money_format: "{{ shop.money_format }}",
+      variant: variant,
+      selector: selector,
+      product_id: '{{ product.id }}',
+      translations: {
+      add_to_cart : "{{ settings.add_to_cart_text }}",
+      sold_out : "Sold Out",
+      unavailable : "Unavailable"
+    }
+                       });
+  };
+  jQuery(function($) {
+    new Shopify.OptionSelectors('productSelect-{{ product.id }}', {
+                                product: {{ product | json }},
+                                onVariantSelected: selectCallback_{{ product.id }},
+                                enableHistoryState: true
+                                });
+
+
+  });
+</script>
+{% endif %}
    <section class="product-benefits background-blue flex-container">
     <div class="third">
     </div>
@@ -120,31 +182,27 @@
   <img src="{{'life-feed-preview.png' | asset_url}}" />
 </section>
 <script>
-  $('.color').change(function() {
-    if ("{{product.title}}" == "Heels & Wedges") {
-      if ($(this).hasClass('nude')) {
-        var src = "//cdn.shopify.com/s/files/1/0424/0893/products/Nude_Heel_3_2000x2000.jpg?v=1529528675"
-        $('#featured-image').attr("src", src)
-        }
-      else if ($(this).hasClass('black')) {
-        $('#featured-image').attr("src","//cdn.shopify.com/s/files/1/0424/0893/products/Womens_BlackHeel_2000x2000.jpg?v=1529528675")
-      }
-    }
-    else if ("{{product.title}}" == "Ballet Flats") {
-      if ($(this).hasClass('nude')) {
-        $('#featured-image').attr("src","//cdn.shopify.com/s/files/1/0424/0893/products/Nude_Flat_Bare_2000x2000.jpg?v=1529418978")
-      }
-      else if ($(this).hasClass('black')) {
-        $('#featured-image').attr("src","//cdn.shopify.com/s/files/1/0424/0893/products/Black_Flat2_2000x2000.jpg?v=1529418978")
-      }
-    }
-    $('.product-image').each(function() {
-      if ($(this).attr("src").replace("compact", "2000x2000") == $('#featured-image').attr("src")) {
-  $(this).addClass('border-lightgray').parent().siblings().children().removeClass('border-lightgray'); 
-      }
-    }); 
+  $('form').change(function() {
+    $('#color-selected').text("{%for variant in product.variants%} {% if variant.selected %}{{variant.title | truncatewords: 1, ""}}{%endif%}{%endfor%}")
   })
-    
+  $(document).ready(function() {
+    $("[data-value='Small'] label").click(function () {
+      $('.small-icon').attr("src", "//cdn.shopify.com/s/files/1/0117/0597/4884/t/6/assets/filled-paca.png?1079638347607270882")
+      $('.medium-icon, .large-icon').attr("src", "//cdn.shopify.com/s/files/1/0117/0597/4884/t/6/assets/stroke-paca.png?1079638347607270882" ); 
+    })
+    $("[data-value='Medium'] label").click(function () {
+      $('.medium-icon').attr("src", "//cdn.shopify.com/s/files/1/0117/0597/4884/t/6/assets/filled-paca.png?1079638347607270882")
+      $('.small-icon, .large-icon').attr("src", "//cdn.shopify.com/s/files/1/0117/0597/4884/t/6/assets/stroke-paca.png?1079638347607270882" ); 
+    })
+    $("[data-value='Large'] label").click(function () {
+      $('.large-icon').attr("src", "//cdn.shopify.com/s/files/1/0117/0597/4884/t/6/assets/filled-paca.png?1079638347607270882")
+      $('.medium-icon, .small-icon').attr("src", "//cdn.shopify.com/s/files/1/0117/0597/4884/t/6/assets/stroke-paca.png?1079638347607270882" ); 
+    })
+  }); 
+  $("[data-value='Small'] label").html("<img src='//cdn.shopify.com/s/files/1/0117/0597/4884/t/6/assets/stroke-paca.png?1079638347607270882' class='small-icon' />")
+    $("[data-value='Medium'] label").html("<img src='//cdn.shopify.com/s/files/1/0117/0597/4884/t/6/assets/stroke-paca.png?1079638347607270882' class='medium-icon' />")
+  $("[data-value='Large'] label").html("<img src='//cdn.shopify.com/s/files/1/0117/0597/4884/t/6/assets/stroke-paca.png?1079638347607270882' class='large-icon' />")
+
 </script>
 <script text="text/javascript">
   var _learnq = _learnq || [];
