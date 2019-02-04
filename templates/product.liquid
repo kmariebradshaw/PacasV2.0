@@ -22,7 +22,7 @@
       </div>
       <p class="tac">{{ product.description }}</p>
     </div>
-    <div class="half tac accent-padding">
+    <div class="half tac accent-padding" id="form-wrapper">
       <h3 class="nmb">{{ product.title }}</h3>
     <form action="/cart/add" method="post" id="product-form-{{ product.id }} t" class="checkout" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
       <div class="tac fw">
@@ -48,7 +48,6 @@
       </select>  
   </div>
 </div>
-    </div>
       {% if product.available %}
         <meta itemprop="priceCurrency" content="{{ shop.currency }}">
         <link itemprop="availability" href="http://schema.org/InStock">
@@ -59,9 +58,12 @@
           {% endfor %}
        </select>
       </div>
-      <button type="submit" name="add" id="add-to-cart-{{ product.id }} add-cart" class="background-gray text-white add-to-cart"><span>Add to Cart</span></button>
-      <p class="subscript clickable" id="size-chart"><b>See Size Guide</b></p>
+      <div class="fw">
+        <button type="submit" name="add" id="add-to-cart-{{ product.id }} add-cart" class="background-gray text-white add-to-cart"><span>Add to Cart</span></button>
+        <p class="subscript clickable" id="size-chart"><b>See Size Guide</b></p>
+      </div>
       {% endif %}
+    </div>
     </form>
   </div>
 </section>
