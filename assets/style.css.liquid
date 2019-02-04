@@ -962,8 +962,56 @@ header.darken, #CartContainer.darken, .mobile-nav1.darken { box-shadow: 1px 1px 
     0% { -webkit-transform: translateX(0%); }
     100% { -webkit-transform: translateX(100%); }
 }
+/* modals */
+#submit-span { background-color: transparent !important; }
+.modal {    
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  z-index: 9999;
+}
+.sizing-chart {
+  background-color: #fff;
+  width: fit-content;
+}
+.modal input[type=email] {
+    width: 100%;
+    font-size: 16pt;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
 
+.modal .klaviyo_submit_button {
+    display: inline-block;
+    font-size: 16pt;
+    line-height: 2;
+    background: #6DCDB8;
+    color: white;
+    text-transform: lowercase;
+    width: 100%;
+}
+.border-lightgray { border: 2px solid #d1cdcd; }
+table .lg { background-color: #d1cdcd; }
+table td, table th { padding: 15px; }
 
+#newsletter_popup2  .third{ 
+  background-image: url("{{'holiday-popup.jpg' | asset_url}}"); 
+  background-size: cover;
+  background-position: center;
+}
+#newsletter_popup2 { overflow: hidden; 
+    width: 90%;
+    min-width: 300px;
+    max-width: 600px;
+}
+
+#newsletter_popup2 .klaviyo_header_close {
+    position: absolute;
+    right: calc( 1% + 10px);
+    top: 10px;
+}
 
 
 
