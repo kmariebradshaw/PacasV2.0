@@ -192,7 +192,7 @@
   <img src="{{'life-feed-preview.png' | asset_url}}" />
 </section>
 <script>
-  $('.right-arrow').click(function() {
+  var swipeRight = function() {
     if ($('.selected').next().length > 0) {
       $('.selected').removeClass('selected').next().addClass('selected')
     }
@@ -201,18 +201,29 @@
       $('.circle').first().addClass('selected')
     }
     $('#featured_image').attr("src", $('.selected').attr("data-image-source"))
-  })
-  $('.left-arrow').click(function() {
-     if ($('.selected').prev('.circle').length > 0) {
+  }
+  var swipeLeft = function() {
+    if ($('.selected').prev('.circle').length > 0) {
       $('.selected').removeClass('selected').prev().addClass('selected')
     }
     else { 
       $('.selected').removeClass('selected'); 
       $('.circle').last().addClass('selected'); 
-            console.log('hit2')
-
     }
     $('#featured_image').attr("src", $('.selected').attr("data-image-source"))
+  }
+
+  $('#featured_image').on("swiperight", function() {
+    swipeLeft(); 
+  })
+   $('#featured_image').on("swipeleft", function() {
+    swipeRight(); 
+  })
+  $('.right-arrow').click(function() {
+    swipeRight(); 
+  })
+  $('.left-arrow').click(function() {
+    swipeLeft(); 
   })
 
   $('.circle').click(function() {
