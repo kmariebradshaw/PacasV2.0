@@ -232,8 +232,9 @@
     $('#featured_image').attr("src", imageURL)
   })
   $('form').change(function() {
-    $('#color-selected').text("{%for variant in product.variants%} {% if variant.selected %}{{variant.title | truncatewords: 1, ""}}{%endif%}{%endfor%}")
-  })
+    var color = $('.swatch .color input:checked').attr("value")
+    $('#color-selected').text(color); 
+   })
   $(document).ready(function() {
     $("[data-value='Small'] label").click(function () {
       $('.small-icon').attr("src", "//cdn.shopify.com/s/files/1/0117/0597/4884/t/6/assets/filled-paca.png?1079638347607270882")
