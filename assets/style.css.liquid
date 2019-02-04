@@ -541,11 +541,57 @@ body section #shaver.rotate { transform: rotate(-10deg); }
   background-size: 50%;
   background-repeat: no-repeat;
 }
+.small .additional-label {
+  float: left;
+  margin-top: 5px;
+    margin-right: 10px;
+}
+#quantity-wrapper .additional-label { width: 25%; }
+#product .additional-label {
+    color: #d1cdcd ;
+}
+#product [data-option-index='1'] {
+    border: 1px solid #d1cdcd;
+    border-radius: 80px;
+    width: 60%;
+    margin: 20px 10px 0 23px;
+    display: inline-block;
+    vertical-align: middle;
+}
+#quantity {
+    font-size: 10pt;
+    width: 25%;
+}
+#quantity-wrapper { 
+  width: 40%; 
+  border: 1px solid #d1cdcd;
+  border-radius: 80px;
+      margin: 20px 25px 0 0;
+  height: 48px;
+  justify-content: center;
+  vertical-align: middle;
+      -webkit-appearance: none;
+    -moz-appearance: none;
+    background-position: 90% center;
+    background-repeat: no-repeat;
+    background-image: url("{{'dropdown.png' | asset_url}}");
+    background-size: 25px;
+}
+.circle {
+    width: 7px;
+    height: 7px;
+    border-radius: 100%;
+    background-color: #d1cdcd;
+    display: inline-block;
+    margin: 1px;
+    vertical-align: middle;
+}
+.circle.selected { padding: 1.5px; }
 .left-arrow { transform: rotate(-90deg); }
 .right-arrow { transform: rotate(90deg); }
 .add-to-cart {
     padding: 15px;
-    width: 75%;
+    width: 92%;
     border-radius: 80px;
     margin: 20px 20px 0 20px;
     box-sizing: border-box;
@@ -555,8 +601,11 @@ body section #shaver.rotate { transform: rotate(-10deg); }
     color: white;
 }
 .small-icon { height: 30px; }
-.medium-icon { height: 40px; }
-.large-icon { height: 50px; }
+.medium-icon { height: 35px; }
+.large-icon { height: 40px;
+    margin-top: 3px;
+    margin-bottom: -1px;
+}
 /*faq*/
 .half-no { width: 50%; }
 .closed span.answer { display: none; }
@@ -630,7 +679,7 @@ body section #shaver.rotate { transform: rotate(-10deg); }
   -webkit-transform:translateZ(0); /* webkit flicker fix */
   -webkit-font-smoothing:antialiased; /* webkit text rendering fix */
   /* Spacing between buttons */
-  margin:0px 10px 10px 0;
+  margin:0px 10px 0 0;
   /* To position the sold out graphic and tooltip */
   position:relative;
 }
@@ -769,7 +818,6 @@ body section #shaver.rotate { transform: rotate(-10deg); }
 /*.text-lightgray { color:  #d1cdcd; }
 */.strike-through { text-decoration: line-through; }
 
-/*cart page*/
 /*cart page*/
 .cart-page .line-item-details input {
     border: 2px solid #F9F7F7;

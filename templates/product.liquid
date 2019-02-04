@@ -7,10 +7,13 @@
     <div class="half accent-padding">
       <div class="flex-container-no jcc">
         <div class="left-arrow"><p class="large">⌃</p></div>
-        <div>
+        <div class="tac">
           <img src="{{ product.featured_image.src | img_url: '2000x2000' }}" alt="{{ image.alt | escape }}" class="fw">
           {% if product.images.size > 1 %}
-            {% for image in product.images %}
+            {% for image in product.images | limit: 1 %}
+              <div class="circle selected"></div>
+            {% endfor %}
+            {% for image in product.images | offset: 1 %}
               <div class="circle"></div>
             {% endfor %}
           {% endif %}
@@ -29,26 +32,33 @@
           {% endif %}
         {% endfor %}
     {% if product.available and product.variants.size > 1 %}
-  {% for option in product.options %}
-    {% include 'swatch' with option %}
-  {% endfor %}
+    {% include 'swatch' with 'Color' %}
 {% endif %}
-    </div>
-      {% if product.available %}
-        <meta itemprop="priceCurrency" content="{{ shop.currency }}">
-        <link itemprop="availability" href="http://schema.org/InStock">
-        
-       <select name="id" id="productSelect-{{ product.id }}" class="product-single__variants" style="display: none;">
-          {% for variant in product.variants %}
-            <option data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
-          {% endfor %}
-       </select>
+<p class="tac nmb">{{product.price | money }} <span class="strike-through subscript">{{product.compare_at_price | money }}</span></p>
+<div class="flex-container-no">
+ {% if product.available and product.variants.size > 1 %}
+    {% include 'swatch' with 'Size' %}
+{% endif %}
+<div class="flex-container-no" id="quantity-wrapper">
+  <p class="additional-label subscript ib">qty</p>
        <select name="quantity" id="quantity">
          {% for i in (1..10) %}
          <option value="{{ i }}">{{ i }}</option>
          {% endfor %}         
       </select>  
-      <br>
+  </div>
+</div>
+    </div>
+      {% if product.available %}
+        <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+        <link itemprop="availability" href="http://schema.org/InStock">
+      <div style="display: none;">
+       <select name="id" id="productSelect-{{ product.id }}" class="product-single__variants" style="display: none;">
+          {% for variant in product.variants %}
+            <option data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
+          {% endfor %}
+       </select>
+      </div>
       <button type="submit" name="add" id="add-to-cart-{{ product.id }} add-cart" class="background-gray text-white add-to-cart"><span>Add to Cart</span></button>
       <p class="subscript clickable" id="size-chart"><b>See Size Guide</b></p>
       {% endif %}
@@ -199,7 +209,8 @@
       $('.medium-icon, .small-icon').attr("src", "//cdn.shopify.com/s/files/1/0117/0597/4884/t/6/assets/stroke-paca.png?1079638347607270882" ); 
     })
   }); 
-  $("[data-value='Small'] label").html("<img src='//cdn.shopify.com/s/files/1/0117/0597/4884/t/6/assets/stroke-paca.png?1079638347607270882' class='small-icon' />")
+  $('.small').prepend("<p class='subscript ib additional-label'>size</p>"); 
+  $("[data-value='Small'] label").html("<img src='//cdn.shopify.com/s/files/1/0117/0597/4884/t/6/assets/filled-paca.png?1079638347607270882' class='small-icon' />")
     $("[data-value='Medium'] label").html("<img src='//cdn.shopify.com/s/files/1/0117/0597/4884/t/6/assets/stroke-paca.png?1079638347607270882' class='medium-icon' />")
   $("[data-value='Large'] label").html("<img src='//cdn.shopify.com/s/files/1/0117/0597/4884/t/6/assets/stroke-paca.png?1079638347607270882' class='large-icon' />")
 
