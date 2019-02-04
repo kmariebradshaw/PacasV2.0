@@ -149,7 +149,6 @@ img { max-width: 100%; }
     justify-content: center;
   }
   table td, table th { padding: 15px; }
-
   .product-benefits .two-thirds  {
     margin: 50px;
 }
@@ -216,7 +215,7 @@ table td, table th { padding: 5px; }
   h2 { font-size: 16pt; } 
   h4 { font-size: 12pt; }
 #faq .faq img { max-width: 100px; }
-
+.product-benefits .mo p { font-size: 10pt; }
   .flex-container { display: block; }
   .accent-padding { padding: 10px; }
   .accent-padding-tb { padding: 10px 0;  }
@@ -232,7 +231,16 @@ table td, table th { padding: 5px; }
 @media only screen and (max-width: 400px) {
   h1 { font-size: 22pt; }
   #dye p.large { font-size: 12pt; }
+  .product-benefits { 
+  background-size: 73%;
+}
 
+}
+@media only screen and (min-width: 675px) and (max-width: 799px) {
+  #no-itch { margin-left: 33%; }
+}
+@media only screen and (min-width: 535px) and (max-width: 588px) {
+  #no-itch { margin-left: 33%; }
 }
 @media only screen and (max-width: 350px) {
     #faq .page-header { background-position: -100px;}
@@ -244,6 +252,9 @@ table td, table th { padding: 5px; }
 }
 @media only screen and (min-width: 401px) {
   #faq .page-header { background-position: right bottom;}
+  .product-benefits { 
+   background-size: 50%;
+  }
 }
 @media only screen and (max-width: 450px) {
   #our-story .page-header { background-position: -60px;}
@@ -544,7 +555,6 @@ body section #shaver.rotate { transform: rotate(-10deg); }
 .product-benefits { 
   background-image: url("{{'alapcabutter.png' | asset_url}}");
   background-position: bottom left;
-  background-size: 50%;
   background-repeat: no-repeat;
 }
 #form-wrapper { max-width: 500px; margin: 0 auto; }
@@ -575,6 +585,9 @@ body section #shaver.rotate { transform: rotate(-10deg); }
 #quantity {
     font-size: 10pt;
     width: 25%;
+    border: none;
+    background: white;
+    -webkit-appearance: none;
 }
 #quantity-wrapper { 
   width: 40%; 
