@@ -8,13 +8,13 @@
       <div class="flex-container-no jcc">
         <div class="left-arrow"><p class="large">⌃</p></div>
         <div class="tac">
-          <img src="{{ product.featured_image.src | img_url: '2000x2000' }}" alt="{{ image.alt | escape }}" class="fw">
+          <img src="{{ product.featured_image.src | img_url: '2000x2000' }}" alt="{{ image.alt | escape }}" class="fw" id="featured_image">
           {% if product.images.size > 1 %}
             {% for image in product.images | limit: 1 %}
-              <div class="circle selected"></div>
+              <div class="circle selected" data-image-source="{{image.src | img_url: '2000x2000' }}"></div>
             {% endfor %}
             {% for image in product.images | offset: 1 %}
-              <div class="circle"></div>
+              <div class="circle" data-image-source="{{image.src | img_url: '2000x2000' }}"></div>
             {% endfor %}
           {% endif %}
         </div>
@@ -192,6 +192,34 @@
   <img src="{{'life-feed-preview.png' | asset_url}}" />
 </section>
 <script>
+  $('.right-arrow').click(function() {
+    if ($('.selected').next().length > 0) {
+      $('.selected').removeClass('selected').next().addClass('selected')
+    }
+    else { 
+      $('.selected').removeClass('selected'); 
+      $('.circle').first().addClass('selected')
+    }
+    $('#featured_image').attr("src", $('.selected').attr("data-image-source"))
+  })
+  $('.left-arrow').click(function() {
+     if ($('.selected').prev('.circle').length > 0) {
+      $('.selected').removeClass('selected').prev().addClass('selected')
+    }
+    else { 
+      $('.selected').removeClass('selected'); 
+      $('.circle').last().addClass('selected'); 
+            console.log('hit2')
+
+    }
+    $('#featured_image').attr("src", $('.selected').attr("data-image-source"))
+  })
+
+  $('.circle').click(function() {
+    $(this).addClass('selected').siblings().removeClass('selected'); 
+    var imageURL = $(this).attr("data-image-source");
+    $('#featured_image').attr("src", imageURL)
+  })
   $('form').change(function() {
     $('#color-selected').text("{%for variant in product.variants%} {% if variant.selected %}{{variant.title | truncatewords: 1, ""}}{%endif%}{%endfor%}")
   })
