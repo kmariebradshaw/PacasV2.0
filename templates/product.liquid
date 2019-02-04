@@ -3,8 +3,8 @@
   <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
   <meta itemprop="image" content="{{ product.featured_image.src | product_img_url: 'grande' }}">
    
-<section class="flex-container accent-padding">
-    <div class="half accent-padding">
+<section class="flex-container-do accent-padding">
+    <div class="half-do accent-padding" id="product-image-wrapper">
       <div class="flex-container-no jcc">
         <div class="left-arrow"><p class="large">⌃</p></div>
         <div class="tac">
@@ -20,9 +20,9 @@
         </div>
         <div class="right-arrow"><p class="large">⌃</p></div>
       </div>
-      <p class="tac">{{ product.description }}</p>
+      <p class="tac do">{{ product.description }}</p>
     </div>
-    <div class="half tac accent-padding" id="form-wrapper">
+    <div class="half-do tac accent-padding" id="form-wrapper">
       <h3 class="nmb">{{ product.title }}</h3>
     <form action="/cart/add" method="post" id="product-form-{{ product.id }} t" class="checkout" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
       <div class="tac fw">
@@ -58,11 +58,11 @@
           {% endfor %}
        </select>
       </div>
-      <div class="fw">
         <button type="submit" name="add" id="add-to-cart-{{ product.id }} add-cart" class="background-gray text-white add-to-cart"><span>Add to Cart</span></button>
         <p class="subscript clickable" id="size-chart"><b>See Size Guide</b></p>
-      </div>
       {% endif %}
+            <p class="tac mo">{{ product.description }}</p>
+
     </div>
     </form>
   </div>
@@ -146,7 +146,7 @@
   });
 </script>
 {% endif %}
-   <section class="product-benefits background-blue flex-container">
+   <section class="product-benefits background-blue flex-container double-padding-tbo">
     <div class="third">
     </div>
     <div class="two-thirds">

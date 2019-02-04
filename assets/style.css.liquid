@@ -148,6 +148,8 @@ img { max-width: 100%; }
     padding: 0 50px;
     justify-content: center;
   }
+  table td, table th { padding: 15px; }
+
   .product-benefits .two-thirds  {
     margin: 50px;
 }
@@ -155,9 +157,9 @@ img { max-width: 100%; }
 #faq .faq .flex-container-no { align-items: flex-start; }
 
   .prog-bar { margin-bottom: 50px; }
-
+  .half-do { width: 50%; }
   .double-padding { padding: 50px; }
-
+  .double-padding-tbo { padding: 50px 0 ; }
   #choose-intro {
     justify-content: center;
     display: flex;
@@ -183,6 +185,8 @@ img { max-width: 100%; }
   .flex-container-do { display: block !important; }
   #shaver { top: 450px; }
   .double-padding { padding: 20px; }
+    .double-padding-tbo { padding: 20px 0 ; }
+
 .prog-bar { margin-top: -25px; }
   .index-padding { padding: 20px 5% !important; }
 
@@ -194,6 +198,7 @@ img { max-width: 100%; }
   h4 { font-size: 14pt; }
 
     #atf  { height: 75vw; }
+table td, table th { padding: 10px; }
 
 }
 @media only screen and (min-width: 589px) {
@@ -207,6 +212,7 @@ img { max-width: 100%; }
 
 }
 @media only screen and (max-width: 588px) {
+table td, table th { padding: 5px; }
   h2 { font-size: 16pt; } 
   h4 { font-size: 12pt; }
 #faq .faq img { max-width: 100px; }
@@ -546,6 +552,10 @@ body section #shaver.rotate { transform: rotate(-10deg); }
   float: left;
   margin-top: 5px;
     margin-right: 10px;
+}
+#product-image-wrapper {
+    max-width: 500px;
+    margin: 0 auto;
 }
 #featured_image {
   touch-action: none;
@@ -1000,7 +1010,6 @@ header.darken, #CartContainer.darken, .mobile-nav1.darken { box-shadow: 1px 1px 
 }
 .border-lightgray { border: 2px solid #d1cdcd; }
 table .lg { background-color: #d1cdcd; }
-table td, table th { padding: 15px; }
 
 #newsletter_popup2  .third{ 
   background-image: url("{{'holiday-popup.jpg' | asset_url}}"); 
