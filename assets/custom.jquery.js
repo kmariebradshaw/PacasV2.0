@@ -14,9 +14,8 @@ $(window).scroll(function(){
 
 // hamburger nav
 $('#hamburger').click(function(){
-  // $(this).toggleClass('open');
   $('.mobile-nav1').show().removeClass('slide-out').addClass('slide-in');
-  $('.index-sections, main, header, footer, #banner-cta, .modal').addClass('darken')
+  $('.index-sections, main, header, footer, #banner-cta, .modal, nav').addClass('darken')
   $('body').addClass('freeze-frame')
 });
 $('#hamburger-close span').click(function() {
@@ -25,10 +24,7 @@ $('#hamburger-close span').click(function() {
 
   $('.index-sections, main, header, footer, #banner-cta, .modal').removeClass('darken')
 })
-// $('#nav-more').click(function() {
-//   $(this).hide(); 
-//   $('.nav-more').show(); 
-// }); 
+
 $('.collection-prod').click(function() {
   event.preventDefault();
   $(this).siblings('.childlink').slideToggle();
@@ -38,48 +34,10 @@ $('.collection-prod').click(function() {
 // sizing chart
 $('#size-chart').click( function() {
   $('#display-size').fadeIn();  
+    $('.index-sections, main, header, footer, #banner-cta, nav').addClass('darken')
+  $('body').addClass('freeze-frame')
 });
 
-// shoe diagram on how it works page
-$('.text-solution').click(function(){
-  var $this = $(this)
-  $this.siblings().removeClass('up-label-vis').removeClass('label-vis').children('.info-label').hide();
-  if ($this.hasClass('text-solution-below')) {
-    $this.toggleClass('up-label-vis');
-  } 
-  else {
-   $this.toggleClass('label-vis');
-  }
-  $this.children('.info-label').toggle(); 
-});
-
-$('.do-text div').click(function(){
-  if ($(this).parent().parent().hasClass('do-text-below')) {
-    $(this).parent().siblings('.do-benefit').toggleClass('border-left');
-      $(this).toggleClass('rotate');
-       $(this).parent().siblings('.do-benefit').toggleClass('invis');
-
-
-  } 
-  else {
-    $(this).toggleClass('rotate');
-    $(this).siblings('.do-benefit').toggleClass('invis');
-  }
-});
-
-$(document).ready(function() {
-  if (window.width < 800) {
-$('body').on('click touchend', function(e) {
-    var target = $(e.target);
-    if(!target.is('.text-solution') ){
-       if ( $('.info-label').is(':visible') ) {
-        $('.info-label').hide(); 
-        $('.text-solution').removeClass('label-vis');
-        $('.text-solution-below').removeClass('up-label-vis');
-    }
-  }
-});
-}});
 // popup close
 $('.klaviyo_header_close').on('click', function() {
   $(this).closest('.modal').hide();
@@ -88,7 +46,7 @@ $('.klaviyo_header_close').on('click', function() {
 });
 $('body').click(function (event) {
    if(!$(event.target).closest('.modal').length && !$(event.target).is('.modal') && !$(event.target).is('#referafriend h3') && !
-    $(event.target).is('#size-chart')  && !$(event.target).closest('#CartContainer').length && !$(event.target).is('button') && !$(event.target).is('button span') && !$(event.target).is('#hamburger span') && !$(event.target).closest('.mobile-nav1').length ) {
+    $(event.target).is('#size-chart')  && !$(event.target).closest('#CartContainer').length && !$(event.target).is('button') && !$(event.target).is('button span') && !$(event.target).is('#hamburger span') && !$(event.target).closest('.mobile-nav1').length && !$(event.target).closest('#size-chart').length ) {
      $(".modal").hide(); 
      if ($('#CartContainer').is(":visible ")) {
       cartClose();
