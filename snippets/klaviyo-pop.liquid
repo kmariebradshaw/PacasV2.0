@@ -1,19 +1,21 @@
 <div class="modal" id="newsletter_popup2" style="display:none;">
   <div class="background-pink tac">
+    <div class="klaviyo-padding">
     <p class="nmt klaviyo_header_close tar clickable" style="font-size: 13pt;"><span>✕</span></p>
-    <form action="//manage.kmail-lists.com/subscriptions/subscribe" method="POST" novalidate="novalidate" class="klaviyo_subscription_form double-padding">
+    <form action="//manage.kmail-lists.com/subscriptions/subscribe" method="POST" novalidate="novalidate" class="klaviyo_subscription_form">
     <input type="hidden" name="g" value="MdrVKk">
     <div class="hide_on_submit">
-      <h3 class="accent nm">Why, hello!</h3>
+      <h2 class="accent nm">Why, hello!</h2>
       <h3 class="nm">Get 10% off your first order</h3>
       <p>Just enter your email below for the coupon code.</p>
-      <input type="email" id="newsletter_popup_$email" class="newsletter_email fw hide_on_submit border-gray" name="email" placeholder="Email">
+      <input type="email" id="newsletter_popup_$email" class="newsletter_email fw hide_on_submit" name="email" placeholder="Email">
       <div class="klaviyo_form_actions hide_on_submit">
         <button type="submit" class="klaviyo_submit_button fw"><span>let's go!</span></button> 
       </div>
         <div class="error_message subscript" style="display: none;"></div> 
       </div>
    </form>
+    </div>
    <p class='nm klaviyo_header_close tar clickable accent-padding' id="success-close" style="display: none;">✕</p>
     <div class="success_message"></div>
     <img src="{{'pop-paca.png' | asset_url}}" />
