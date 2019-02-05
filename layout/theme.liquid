@@ -32,7 +32,7 @@
     <title>{% if template == 'index' %}Pacas™ {% elsif template == '404' %}Page Not Found | {{ shop.name }}{% else %}{{ page_title }}{% endif %}</title>
     <link rel="canonical" href="{{ canonical_url }}">
     <link rel="icon" type="image/png" href="{{ 'favicon.png' | asset_url }}">
-    
+
     {{ 'style.css' | asset_url | stylesheet_tag }}
     <script type="text/javascript" src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=ueKycW"></script>
     <script src="{{'klaviyo.js' | asset_url}}" ></script>
@@ -48,8 +48,8 @@
     <script src="{{'jquery.mobile.custom.min.js' | asset_url}}"></script> 
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" defer />
 <script src="{{'lazysizes.min.js' | asset_url}}" async=""></script>
-
     {% include 'ajax-cart-template' %}
+
     <script async>
       jQuery(function($) {
         ajaxCart.init({
@@ -103,7 +103,8 @@
 
     
        <script>jQuery(function(){jQuery(".swatch :radio").change(function(){var t=jQuery(this).closest(".swatch").attr("data-option-index"),e=jQuery(this).val();jQuery(this).closest("form").find(".single-option-selector").eq(t).val(e).trigger("change")})});</script>
-    
+        {% include 'klaviyo-pop' %}
+
     {% include 'remove-sold-out' %}
     {% include 'linked-options' %}
         
