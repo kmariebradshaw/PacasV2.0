@@ -10,7 +10,8 @@
       <p>Just enter your email below for the coupon code.</p>
       <input type="email" id="newsletter_popup_$email" class="newsletter_email fw hide_on_submit" name="email" placeholder="Email">
       <div class="klaviyo_form_actions hide_on_submit">
-        <button type="submit" class="klaviyo_submit_button fw"><span>let's go!</span></button> 
+        <button type="submit" class="klaviyo_submit_button fw"><span>Get my 10% off</span></button>
+        <p class="border-bottom-gray clickable ib klaviyo_header_close">No thanks, I don't want 10% off.</p> 
       </div>
         <div class="error_message subscript" style="display: none;"></div> 
       </div>
@@ -24,17 +25,18 @@
  
 <script>
 $(document).ready(function(){ 
-  var flowFinish = readCookie('flowFinish')
-  var gekksVisit = readCookie('gekksVisit')
+  // var flowFinish = readCookie('flowFinish')
+  // var pacasVisit = readCookie('pacasVisit')
   var newsletterModal = readCookie('newsletterModal')
-  if ((flowFinish) && (gekksVisit) && !(newsletterModal) && $('.mobile-nav1:visible').length == 0){
+  // if ((flowFinish) && (gekksVisit) && !(newsletterModal) && $('.mobile-nav1:visible').length == 0){
+  if (!(newsletterModal) && $('.mobile-nav1:visible').length == 0){
     setTimeout(function(){
       $('.modal').removeClass('darken')
       if ($('.modal:visible').length == 0) {
         KlaviyoSubscribe.attachToModalForm('#newsletter_popup2', {
           delay_seconds: 0,
           ignore_cookie: true,
-          success_message: "<div class='success_feedback accent-padding'><div class='accent-padding border-white'><h2>Thank you!</h2><h3>You've unlocked $12 Gekks when you purchase 3 or more pairs.</h3><p class='tac'>Discount will be automatically applied in checkout</p></div></div>",
+          success_message: "<div class='success_feedback accent-padding'><div class='accent-padding border-white'><h2 class='accent'>Thank you!</h2><p class='tac'>Check your inbox for your coupon code!</p></div></div>",
      success: function ($form) {
           createCookie("emailSignUp", "popup", 14)
 
@@ -46,11 +48,10 @@ $(document).ready(function(){
   };
     createCookie("newsletterModal", "Displayed", 5)
     $('.index-sections, main, header, footer, #banner-cta, .mobile-nav1').addClass('darken')
+    $('body').addClass('freeze-frame')
    }, 3000); 
   }
 }); 
-
-
 </script>
 
 {% comment %} Exit Intent {% endcomment %}
