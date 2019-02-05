@@ -47,6 +47,7 @@ a { color: #7b8284; }
 }
 .vis-hid { visibility: hidden; }
 html { padding-bottom: 0 !important; }
+.background-pink {   background-color: #fdf3ed; }
 .background-gray { background-color: #7b8284; }
 .background-purple { background-color: #dacbd8; }
 .background-blue {background-color: #f5fcfc;}
@@ -1038,55 +1039,23 @@ header.darken, #CartContainer.darken, .mobile-nav1.darken { box-shadow: 1px 1px 
   background-color: #fff;
   width: fit-content;
 }
-.modal input[type=email] {
-    width: 100%;
-    font-size: 16pt;
-    line-height: 1.5;
-    margin-bottom: 20px;
-    box-sizing: border-box;
-}
 
-.modal .klaviyo_submit_button {
-    display: inline-block;
-    font-size: 16pt;
-    line-height: 2;
-    background: #6DCDB8;
-    color: white;
-    text-transform: lowercase;
-    width: 100%;
-}
 .border-lightgray { border: 2px solid #d1cdcd; }
 table .lg { background-color: #d1cdcd; }
 
-#newsletter_popup2  .third{ 
-  background-image: url("{{'holiday-popup.jpg' | asset_url}}"); 
-  background-size: cover;
-  background-position: center;
-}
-#newsletter_popup2 { overflow: hidden; 
-    width: 90%;
-    min-width: 300px;
-    max-width: 600px;
-}
-#newsletter_popup2 .klaviyo_header_close {
-    position: absolute;
-    right: calc( 1% + 10px);
-    top: 10px;
-}
-
 /*contact us */
-.contact_input {
+.contact_input, .newsletter_email  {
     padding: 15px;
     border-radius: 20px;
     box-sizing: border-box;
     font-size: 10pt;
 }
-#contact-submit-wrapper {
+#contact-submit-wrapper, .klaviyo_submit_button {
     padding: 15px;
     background: gray;
     border-radius: 20px;
 }
-#contact-submit-wrapper input {
+#contact-submit-wrapper input, .klaviyo_submit_button span {
     font-size: 10pt;
     color: white;
 }
