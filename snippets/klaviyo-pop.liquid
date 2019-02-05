@@ -17,8 +17,7 @@
       </div>
    </form>
     </div>
-   <p class='nm klaviyo_header_close tar clickable accent-padding' id="success-close" style="display: none;">✕</p>
-    <div class="success_message"></div>
+    <div class="success_message" style="display: none;"><div class='success_feedback accent-padding'><div class='accent-padding'><h2 class='accent'>Thank you!</h2><p class='tac'>Check your inbox for your coupon code!</p></div></div></div>
     <img src="{{'pop-paca.png' | asset_url}}" />
   </div>
 </div> 
@@ -29,58 +28,62 @@ $(document).ready(function(){
   // var pacasVisit = readCookie('pacasVisit')
   var newsletterModal = readCookie('newsletterModal')
   // if ((flowFinish) && (gekksVisit) && !(newsletterModal) && $('.mobile-nav1:visible').length == 0){
-  if (!(newsletterModal) && $('.mobile-nav1:visible').length == 0){
+  // if ( !(newsletterModal) && $('.mobile-nav1:visible').length == 0){
+  if ($('.mobile-nav1:visible').length == 0){
     setTimeout(function(){
       $('.modal').removeClass('darken')
       if ($('.modal:visible').length == 0) {
         KlaviyoSubscribe.attachToModalForm('#newsletter_popup2', {
+          success_message: "<div class='success_feedback accent-padding'><div class='accent-padding border-white'><h2 class='accent'>Thank you!</h2><p class='tac'>Check your inbox for your coupon code!</p></div></div>",
           delay_seconds: 0,
           ignore_cookie: true,
-          success_message: "<div class='success_feedback accent-padding'><div class='accent-padding border-white'><h2 class='accent'>Thank you!</h2><p class='tac'>Check your inbox for your coupon code!</p></div></div>",
-     success: function ($form) {
-          createCookie("emailSignUp", "popup", 14)
-
-      $('#success-close').show();
-      ga('send', 'event', 'Acquisition', 'Pop Up', 'Website');
-      $form.find('.hide_on_submit').hide();
-    },
-  }); 
-  };
-    createCookie("newsletterModal", "Displayed", 5)
-    $('.index-sections, main, header, footer, #banner-cta, .mobile-nav1').addClass('darken')
-    $('body').addClass('freeze-frame')
-   }, 3000); 
+          success: function ($form) {
+            createCookie("emailSignUp", "popup", 14)
+            $form.find('.hide_on_submit').hide();
+            $
+            $('.success_message').show();
+          },
+        }); 
+      };
+      createCookie("newsletterModal", "Displayed", 5)
+      $('.index-sections, main, header, footer, #banner-cta, .mobile-nav1, nav').addClass('darken')
+      $('body').addClass('freeze-frame')
+    }, 3000); 
   }
 }); 
 </script>
 
 {% comment %} Exit Intent {% endcomment %}
 <div class="modal" id="exit_offer" style="display:none;">
-  <div class="background-lightgray accent-padding tac exitpop">
-  <p class="tar nmt klaviyo_header_close clickable">✕</p>
-   <form action="//manage.kmail-lists.com/subscriptions/subscribe" method="POST" novalidate="novalidate" class="klaviyo_subscription_form">
-    <input type="hidden" name="g" value="PUyKK8"> 
-    <div class="hide_on_submit">
-      <h1 class="accent-padding border-white nm">Wait!</h1> 
-      <p class="text-green">Get 10% off your first $30 order.<br> You'll also receive <b>exclusive discounts</b> directly to your email!</p>
-      <div class="klaviyo_fieldset hide_on_submit">
-      <div class="klaviyo_field_group">
-        <input type="email" id="newsletter_popup_$email" name="email"></div>
-      </div> 
-      <div class="klaviyo_form_actions hide_on_submit">
-        <button type="submit" class="klaviyo_submit_button"><span>Get my discount!</span></button>
-      </div>
+  <div class="background-pink exitpop">
+    <div class="klaviyo-padding tac">
+      <p class="tar nmt klaviyo_header_close clickable" style="font-size: 13pt">✕</p>
+      <form action="//manage.kmail-lists.com/subscriptions/subscribe" method="POST" novalidate="novalidate" class="klaviyo_subscription_form">
+        <input type="hidden" name="g" value="MdrVKk"> 
+        <div class="hide_on_submit">
+          <h2>Wait!</h2> 
+          <p class="text-green">Get 10% off your first order.<br> You'll also receive <b>exclusive discounts</b> directly to your email!</p>
+          <div class="klaviyo_fieldset hide_on_submit">
+            <div class="klaviyo_field_group">
+              <input type="email" id="newsletter_popup_$email" class="newsletter_email fw" name="email" placeholder="Email">
+            </div>
+          </div> 
+          <div class="klaviyo_form_actions hide_on_submit">
+            <button type="submit" class="klaviyo_submit_button fw"><span>Get my discount!</span></button>
+          </div>
+        </div>
+        <p class="error_message subscript tac" style="display: none;"></p>
+      </form>
+      <div class="success_message" ></div>
     </div>
-   <p class="error_message subscript tac" style="display: none;"></p>
-   </form>
-   <div class="success_message" ></div>
+    <img src="{{'exit-pop-paca.png' | asset_url}}" />
   </div>
 </div>
 
 <script>
 $(document).ready(function(){
   var executed = false 
-  if (!sessionStorage.exitAttempted) {
+ if (!sessionStorage.exitAttempted) {
    $(document).on('mouseleave', leaveFromTop);
       function leaveFromTop(e){
         if ($('.modal:visible').length == 0 && (e.clientY < 0 ) && (!executed) && $('.mobile-nav1:visible').length == 0) {
@@ -88,22 +91,23 @@ $(document).ready(function(){
 
             $('.modal').removeClass('darken')
             KlaviyoSubscribe.attachToModalForm('#exit_offer', {
-              success_message: "<div class='success_feedback accent-padding'><div class='accent-padding border-white'><h2>Thank you!</h2><h3>Use the discount code below to receive 10% off your first order over $30 USD</h3><h2 class='text-green'>GEKKS10</h2></div>",
+              success_message: "<div class='success_feedback accent-padding'><div class='accent-padding'><h2 class='accent'>Thank you!</h2><p class='tac'>Check your inbox for your coupon code!</p></div></div>",
               ignore_cookie: true, 
               delay_seconds: 0.1,
               success: function ($form) {
                           createCookie("emailSignUp", "exit", 14)
 
               $form.find('.hide_on_submit').hide();
-              ga('send', 'event', 'Acquisition', 'Exit Offer', 'Website');
               },
             }); 
             executed = true 
             sessionStorage.exitAttempted = 1    
-                $('.index-sections, main, header, footer, #banner-cta, .mobile-nav1').addClass('darken')
+                $('.index-sections, main, header, footer, #banner-cta, .mobile-nav1, nav').addClass('darken')
+                    $('body').addClass('freeze-frame')
+
       
       }; 
-    };
+     };
   };
 });
 </script>
