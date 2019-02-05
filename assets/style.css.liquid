@@ -78,8 +78,10 @@ img { max-width: 100%; }
   h3{ font-size: 24pt; }
   h4 { font-size: 16pt; }
  .index-padding { padding: 3% 10% !important; } 
+  #close-cart { margin-top: 37px;}
+  #go-to-cart { top: 59px;}
 
-  p, table { font-size: 14pt; } 
+  p, table { font-size: 12pt; } 
   #comparison {
     height: 350px;
     width: 850px;
@@ -120,20 +122,22 @@ img { max-width: 100%; }
   h1 { font-size: 57pt; } 
   h2 { font-size: 32pt; } 
   h3{ font-size: 16pt; } 
-  h4 { font-size: 14pt; }
+  h4 { font-size: 12pt; }
   .index-padding { padding: 2.5% 5% !important; } 
   #faq .page-header {  height: 300px; }
-  p, table { font-size: 12pt; } 
+  p, table { font-size: 10pt; } 
   footer { padding: 50px; }
   #atf  { height: 75vw; max-height: 600px; }
   #paca-intro, #charity-slide { 
     background-image: url("{{'dflow-paca.png' | asset_url}}"); 
     background-position: bottom left;
   }
+  #go-to-cart { top: 40px;}
     #exit-text, #intro-text {
     margin-top: 100px;
     margin-left: 300px;
   }
+  #close-cart { margin-top: 18px;}
   #our-story .page-header { height: 300px;}
   .product-benefits .two-thirds .half { margin: 25px 15px; }
 }
@@ -181,6 +185,10 @@ img { max-width: 100%; }
     background-image: url("{{'flow-paca.png' | asset_url}}"); 
     background-position: bottom right;
   }
+    #close-cart { margin-top: 14px;}
+
+    p, table { font-size: 10pt; } 
+
   .flex-container-do { display: block !important; }
   #shaver { top: 450px; }
   .double-padding { padding: 20px; }
@@ -193,8 +201,9 @@ img { max-width: 100%; }
 @media only screen and (min-width: 589px) and (max-width: 799px) {
   h1 { font-size: 43pt; } 
   h2 { font-size: 30pt; } 
-  p, table { font-size: 12pt; }
+  p, table { font-size: 10pt; }
   h4 { font-size: 14pt; }
+  #go-to-cart { top: 36.5px;}
 
     #atf  { height: 75vw; }
 table td, table th { padding: 10px; }
@@ -220,6 +229,7 @@ table td, table th { padding: 5px; }
   .flex-container { display: block; }
   .accent-padding { padding: 10px; }
   .accent-padding-tb { padding: 10px 0;  }
+  #go-to-cart { top: 26.5px;}
 
   #atf { height: 90vw; }
   footer section {  margin: 10px;}
@@ -597,6 +607,7 @@ body section #shaver.rotate { transform: rotate(-10deg); }
   border-radius: 80px;
       margin: 20px 0 0 0;
   height: 48px;
+  box-sizing: border-box;
   justify-content: center;
   vertical-align: middle;
       -webkit-appearance: none;
@@ -624,6 +635,8 @@ body section #shaver.rotate { transform: rotate(-10deg); }
     border-radius: 80px;
     margin: 20px 0 0 0;
     box-sizing: border-box;
+    border: 1px solid #7b8284;
+    background: #7b8284;
 }
 .add-to-cart  span {
     font-size: 10pt;
@@ -859,12 +872,13 @@ body section #shaver.rotate { transform: rotate(-10deg); }
     margin: 5px;
     font-weight: 300;
 }
-#close-cart {
-    float: right;
-}
 #product-wrap { 
   overflow: scroll;
-  max-height: 400px;
+}
+#go-to-cart {
+    position: absolute;
+    right: 20px;
+    max-width: 35px;
 }
 .quarter { 
   width: 25%; 
@@ -920,6 +934,24 @@ body .additional-checkout-button {
   font-size: 20pt;
   cursor: pointer;
   padding: 10px 10px 0 0;
+}
+.ajaxcart__qty {
+    border: 1px solid  #d1cdcd;
+    padding: 5px 10px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 10px;
+}
+.ajaxcart__qty-num {
+    width: 20%;
+    text-align: center;
+}
+.ajaxcart__footer { margin-top: 50px; }
+.ajaxcart__product-name {font-weight: bold;}
+#close-cart {
+    position: absolute;
+    max-width: 35px;
 }
 #timer-wrapper { 
   width: fit-content;
