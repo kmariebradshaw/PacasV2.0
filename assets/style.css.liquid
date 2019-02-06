@@ -151,6 +151,7 @@ img { max-width: 100%; }
     padding: 0 50px;
     justify-content: center;
   }
+  #cart-order-summary {margin-left: 60px;}
   table td, table th { padding: 15px; }
   .product-benefits .two-thirds  {
     margin: 50px;
@@ -182,6 +183,7 @@ img { max-width: 100%; }
     background-image: url("{{'flow-paca.png' | asset_url}}"); 
     background-position: bottom right;
   }
+  #cart-order-summary { margin-top: 60px;}
   #close-cart { margin-top: 14px;}
   p, table { font-size: 10pt; } 
   .flex-container-do { display: block !important; }
@@ -190,6 +192,9 @@ img { max-width: 100%; }
   .double-padding-tbo { padding: 20px 0 ; }
   .prog-bar { margin-top: -25px; }
   .index-padding { padding: 20px 5% !important; }
+  .cart-page h3 {text-align: center;}
+  .cart-page .two-thirds { width: 100%; }
+  .cart-page .third {width: 100%;}
 }
 @media only screen and (min-width: 589px) and (max-width: 799px) {
   h1 { font-size: 43pt; } 
@@ -212,6 +217,9 @@ img { max-width: 100%; }
     right: 35px;
     width: 40px;
   }
+  .cart-update { margin-bottom: 20px; }
+  .price-details { padding: 20px 0 20px 20px ; }
+  #cart-update-wrapper { margin-top: -20px;}
   .upper-pad {padding-top: 94.55px;}
   .jlogo { width: 130px; }
   #hamburger {
@@ -234,6 +242,9 @@ img { max-width: 100%; }
     right: 20px;
     width: 30px;
   }
+  .cart-update { margin-bottom: 10px; }
+  .price-details { padding: 10px 0 10px 10px ; }
+  #cart-update-wrapper { margin-top: -10px;}
   #hamburger span { height: 3px; }
   #hamburger {
     width: 30px;
@@ -881,11 +892,6 @@ body section #shaver.rotate { transform: rotate(-10deg); }
   margin: 5px;
   color: #7b8284;     
 }
-.price-details { padding: 20px 0 20px 20px ; }
-#cart-order-summary {
-  margin-left: 60px;
-}
-#cart-update-wrapper { margin-top: -20px;}
 #product-wrap { 
   overflow: scroll;
 }
@@ -939,14 +945,13 @@ body .additional-checkout-button {
     display: inline-block;
     text-align: center;
     border: 1px solid #d1cdcd;
-    padding: 5px 10px;
+    padding: 5px 20px;
     box-sizing: border-box;
     margin-left: 10px;
     border-radius: 20px;
     font-size: 10pt;
     background: transparent;
     color: #7b8284;
-    margin-bottom: 20px;
 }
 /*ajax cart*/
 .close {
