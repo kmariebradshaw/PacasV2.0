@@ -42,9 +42,6 @@ body {
 }
 .block { display: block; }
 a { color: #7b8284; }
-.upper-pad {
-  padding-top: 94.55px;
-}
 .vis-hid { visibility: hidden; }
 html { padding-bottom: 0 !important; }
 .background-pink {   background-color: #fdf3ed; }
@@ -171,9 +168,7 @@ img { max-width: 100%; }
     width: 50%;
     margin-right: 50px;
     max-width: 600px;
-  }
-/*  #flow section { height: 65vh; }
-*/ 
+  } 
 }
 @media only screen and (max-width: 799px) {
   .page-header { padding: 50px 20px; }
@@ -186,18 +181,14 @@ img { max-width: 100%; }
     background-image: url("{{'flow-paca.png' | asset_url}}"); 
     background-position: bottom right;
   }
-    #close-cart { margin-top: 14px;}
-
-    p, table { font-size: 10pt; } 
-
+  #close-cart { margin-top: 14px;}
+  p, table { font-size: 10pt; } 
   .flex-container-do { display: block !important; }
   #shaver { top: 450px; }
   .double-padding { padding: 20px; }
-    .double-padding-tbo { padding: 20px 0 ; }
-
-.prog-bar { margin-top: -25px; }
+  .double-padding-tbo { padding: 20px 0 ; }
+  .prog-bar { margin-top: -25px; }
   .index-padding { padding: 20px 5% !important; }
-
 }
 @media only screen and (min-width: 589px) and (max-width: 799px) {
   h1 { font-size: 43pt; } 
@@ -205,33 +196,67 @@ img { max-width: 100%; }
   p, table { font-size: 10pt; }
   h4 { font-size: 14pt; }
   #go-to-cart { top: 36.5px;}
-
-    #atf  { height: 75vw; }
-table td, table th { padding: 10px; }
-
+  #atf  { height: 75vw; }
+  table td, table th { padding: 10px; }
+  #our-story .page-header { min-height: 200px; }
 }
 @media only screen and (min-width: 589px) {
   .accent-padding { padding: 20px; }
   .accent-padding-tb { padding: 20px 0;}
-
   .half { width: 50%; box-sizing: border-box; }
   footer section {  margin: auto 20px;}
-#faq .faq img { max-width: 150px; }
-
-
+  #faq .faq img { max-width: 150px; }
+  #mobile-cart  {
+    top: 28px;
+    right: 35px;
+    width: 40px;
+  }
+  .upper-pad {padding-top: 94.55px;}
+  .jlogo { width: 130px; }
+  #hamburger {
+    display: inline-block !important; 
+    width: 40px;
+    top: 35px;
+    left: 35px;
+  }
+  #hamburger span { height: 5px; }
+  #hamburger span:nth-child(2),#hamburger span:nth-child(3) {
+    top: 10px;
+  }
+  #hamburger span:nth-child(4) {
+    top: 20px;
+  }
 }
 @media only screen and (max-width: 588px) {
+  #mobile-cart {
+    top: 25px;
+    right: 20px;
+    width: 30px;
+  }
+  #hamburger span { height: 3px; }
+  #hamburger {
+    width: 30px;
+    top: 30px;
+    left: 20px;
+  }
+  #hamburger span:nth-child(2),#hamburger span:nth-child(3) {
+    top: 8px;
+  }
+  #hamburger span:nth-child(4) {
+    top: 16px;
+  }
+  .upper-pad {padding-top: 79px;}
+  .jlogo {width: 90px;}
   #contact-form-half { padding-top: 0; }
-table td, table th { padding: 5px; }
+  table td, table th { padding: 5px; }
   h2 { font-size: 16pt; } 
   h4 { font-size: 12pt; }
-#faq .faq img { max-width: 100px; }
-.product-benefits .mo p { font-size: 10pt; }
+  #faq .faq img { max-width: 100px; }
+  .product-benefits .mo p { font-size: 10pt; }
   .flex-container { display: block; }
   .accent-padding { padding: 10px; }
   .accent-padding-tb { padding: 10px 0;  }
   #go-to-cart { top: 26.5px;}
-
   #atf { height: 90vw; }
   footer section {  margin: 10px;}
   #dye { background-position: -45px; }
@@ -290,7 +315,6 @@ p, textarea, td, ul, li, .error_message, .success_message { font-family: 'Quicks
 
 #hamburger {
   display: inline-block !important; 
-  width: 40px;
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
   -o-transform: rotate(0deg);
@@ -300,21 +324,14 @@ p, textarea, td, ul, li, .error_message, .success_message { font-family: 'Quicks
   -o-transition: .5s ease-in-out;
   transition: .5s ease-in-out;
   cursor: pointer;
-      position: absolute;
-    top: 35px;
-    left: 35px;
-
+  position: absolute;
 }
 #mobile-cart  {
     position: absolute;
-    top: 28px;
-    right: 35px;
-    width: 40px;
 }
 #hamburger span {
   display: block;
   position: absolute;
-  height: 5px;
   width: 100%;
   background: #7b8284;
   border-radius: 9px;
@@ -333,15 +350,6 @@ p, textarea, td, ul, li, .error_message, .success_message { font-family: 'Quicks
 #hamburger span:nth-child(1) {
   top: 0px;
 }
-
-#hamburger span:nth-child(2),#hamburger span:nth-child(3) {
-  top: 10px;
-}
-
-#hamburger span:nth-child(4) {
-  top: 20px;
-}
-
 #hamburger.open span:nth-child(1) {
   top: 18px;
   width: 0%;
@@ -368,7 +376,6 @@ p, textarea, td, ul, li, .error_message, .success_message { font-family: 'Quicks
   left: 50%;
 }
 .cart-icon { width: 30px;}
-.jlogo { width: 130px; }
 nav .jes { width: calc(50% - 65px); }
 nav { padding: 20px; box-sizing: border-box;   transition: 0.5s ease-out;} 
 /* footer */
