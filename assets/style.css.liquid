@@ -36,6 +36,7 @@
 .nm { margin: 0 !important; }
 .nmt { margin-top: 0; }
 .nmb { margin-bottom: 0; }
+.asfs { align-self: flex-start; }
 body { 
   margin: 0;
   color:  #7b8284;
@@ -79,7 +80,7 @@ img { max-width: 100%; }
   #close-cart { margin-top: 37px;}
   #go-to-cart { top: 59px;}
 
-  p, table { font-size: 12pt; } 
+  p, table, h5{ font-size: 12pt; } 
   #comparison {
     height: 350px;
     width: 850px;
@@ -875,11 +876,16 @@ body section #shaver.rotate { transform: rotate(-10deg); }
 
 /*cart page*/
 .cart-page .line-item-details input {
-    border: 2px solid #F9F7F7;
-    text-align: center;
-    margin: 5px;
-    font-weight: 300;
+  border: 2px solid #F9F7F7;
+  text-align: center;
+  margin: 5px;
+  color: #7b8284;     
 }
+.price-details { padding: 20px 0 20px 20px ; }
+#cart-order-summary {
+  margin-left: 60px;
+}
+#cart-update-wrapper { margin-top: -20px;}
 #product-wrap { 
   overflow: scroll;
 }
@@ -887,6 +893,10 @@ body section #shaver.rotate { transform: rotate(-10deg); }
     position: absolute;
     right: 20px;
     max-width: 35px;
+}
+.cart-page img { 
+  width: 105px;
+  margin: 0 auto;
 }
 .quarter { 
   width: 25%; 
@@ -898,6 +908,7 @@ body .additional-checkout-button {
   box-sizing: border-box;
   margin: 5px 0 !important;
 }
+.note { margin-top: 60px; }
 .cart-page .additional-checkout-button--google-pay {
     line-height: 0 !important;
     padding: 0 !important;
@@ -905,33 +916,37 @@ body .additional-checkout-button {
     width: 100% !important;
 }
 #checkout {
-    font-size: 14pt;
+    font-size: 10pt;
     text-align: center;
-    background: #6dcdb8;
+    background: #7b8284 ;
     width: 100%;
     border: none;
     height: 47px;
+    border-radius: 80px;
     color: white;
+    margin: 20px auto;
 }
-.cart-page form .flex-container-no { margin-bottom: 10px; }
-.cart-page #note  {
+.cart-page #note {
     max-width: 800px;
     width: 100%;
     height: 100px;
     padding: 20px;
     box-sizing: border-box;
-    border: 2px solid #F9F7F7;
+    border-radius: 20px;
+    border: 1px solid #d1cdcd;
 }
-.cart-update { 
+.cart-update {
     display: inline-block;
     text-align: center;
-    background: #F9F7F7;
-    padding: 5px;
+    border: 1px solid #d1cdcd;
+    padding: 5px 10px;
     box-sizing: border-box;
-    border: none;
-    font-weight: 300;
-    margin-top: 10px;
-    float: right;
+    margin-left: 10px;
+    border-radius: 20px;
+    font-size: 10pt;
+    background: transparent;
+    color: #7b8284;
+    margin-bottom: 20px;
 }
 /*ajax cart*/
 .close {
@@ -1077,9 +1092,6 @@ table .lg { background-color: #d1cdcd; }
     font-size: 10pt;
     color: white;
 }
-
-
-
 
 
 
