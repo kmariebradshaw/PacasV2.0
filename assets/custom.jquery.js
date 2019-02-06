@@ -18,11 +18,11 @@ $('#hamburger').click(function(){
   $('.index-sections, main, header, footer, #banner-cta, .modal, nav').addClass('darken')
   $('body').addClass('freeze-frame')
 });
-$('#hamburger-close span').click(function() {
+$('#mobile-cart-close').click(function() {
     $('.mobile-nav1').removeClass('slide-in').addClass('slide-out');
     $('body').removeClass('freeze-frame')
 
-  $('.index-sections, main, header, footer, #banner-cta, .modal').removeClass('darken')
+  $('.index-sections, main, header, footer, #banner-cta, .modal, nav').removeClass('darken')
 })
 
 $('.collection-prod').click(function() {
