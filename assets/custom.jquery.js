@@ -18,7 +18,7 @@ $('#hamburger').click(function(){
   $('.index-sections, main, header, footer, #banner-cta, .modal, nav').addClass('darken')
   $('body').addClass('freeze-frame')
 });
-$('#mobile-cart-close').click(function() {
+$('#mobile-drawer-close').click(function() {
     $('.mobile-nav1').removeClass('slide-in').addClass('slide-out');
     $('body').removeClass('freeze-frame')
 
