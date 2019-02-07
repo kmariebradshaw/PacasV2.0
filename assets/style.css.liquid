@@ -1165,8 +1165,38 @@ table .lg { background-color: #d1cdcd; }
     100% { -webkit-transform: translateX(-100%); }
 }
 
+/* live feed */
 
+.feed-row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 10px;
+}
 
+.feed-column {
+  flex: 25%;
+  max-width: 25%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.feed-column div {
+  margin-top: 10px;
+  vertical-align: middle;
+}
+.feed-column div img { display: block; margin: 0 auto; }
+@media screen and (max-width: 800px) {
+  .feed-column {
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .feed-column {
+    flex: 100%;
+    max-width: 100%;
+  }
+}
 
 
 
