@@ -1024,6 +1024,7 @@ body .additional-checkout-button {
     -webkit-animation: slide-out 0.5s forwards;
 }
 
+
 .darken {
     position: relative;
 }
@@ -1115,6 +1116,8 @@ table .lg { background-color: #d1cdcd; }
   height: 100vh;
   overflow-y: scroll;
   border-right: 1px solid #7b8284;
+     transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
 }
 #mobile-drawer-close { 
   position: absolute;
@@ -1133,3 +1136,33 @@ table .lg { background-color: #d1cdcd; }
 .rotate90 {
   transform: rotate(90deg);
 }
+.slide-in-left {
+    animation: slide-in-left 0.5s forwards;
+    -webkit-animation: slide-in-left 0.5s forwards;
+}
+.slide-out-left {
+    animation: slide-out-left 0.5s forwards;
+    -webkit-animation: slide-out-left 0.5s forwards;
+}
+@keyframes slide-in-left {
+    100% { transform: translateX(0%); }
+}
+
+@-webkit-keyframes slide-in-left {
+    100% { -webkit-transform: translateX(0%); }
+}
+@keyframes slide-out-left {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-100%); }
+}
+
+@-webkit-keyframes slide-out-left {
+    0% { -webkit-transform: translateX(0%); }
+    100% { -webkit-transform: translateX(-100%); }
+}
+
+
+
+
+
+

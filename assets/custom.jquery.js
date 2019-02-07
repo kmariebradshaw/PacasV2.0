@@ -14,12 +14,12 @@ $(window).scroll(function(){
 
 // hamburger nav
 $('#hamburger').click(function(){
-  $('.mobile-nav1').show().removeClass('slide-out').addClass('slide-in');
+  $('.mobile-nav1').show().removeClass('slide-out-left').addClass('slide-in-left');
   $('.index-sections, main, header, footer, #banner-cta, .modal, nav').addClass('darken')
   $('body').addClass('freeze-frame')
 });
 $('#mobile-drawer-close').click(function() {
-    $('.mobile-nav1').removeClass('slide-in').addClass('slide-out');
+    $('.mobile-nav1').removeClass('slide-in-left').addClass('slide-out-left');
     $('body').removeClass('freeze-frame')
 
   $('.index-sections, main, header, footer, #banner-cta, .modal, nav').removeClass('darken')
