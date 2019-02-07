@@ -14,22 +14,22 @@ $(window).scroll(function(){
 
 // hamburger nav
 $('#hamburger').click(function(){
-  $('.mobile-nav1').show().removeClass('slide-out').addClass('slide-in');
+  $('.mobile-nav1').show().removeClass('slide-out-left').addClass('slide-in-left');
   $('.index-sections, main, header, footer, #banner-cta, .modal, nav').addClass('darken')
   $('body').addClass('freeze-frame')
 });
-$('#hamburger-close span').click(function() {
-    $('.mobile-nav1').removeClass('slide-in').addClass('slide-out');
+$('#mobile-drawer-close').click(function() {
+    $('.mobile-nav1').removeClass('slide-in-left').addClass('slide-out-left');
     $('body').removeClass('freeze-frame')
 
-  $('.index-sections, main, header, footer, #banner-cta, .modal').removeClass('darken')
+  $('.index-sections, main, header, footer, #banner-cta, .modal, nav').removeClass('darken')
 })
 
 $('.collection-prod').click(function() {
   event.preventDefault();
+  console.log('hit')
   $(this).siblings('.childlink').slideToggle();
-  $(this).css(':after', 'transform:rotate(90deg)')
-  $(this).children('span').text($(this).children('span').text() == '◯' ? '⬤' : '◯')
+  $(".fr", this).toggleClass('rotate90')
 });
 // sizing chart
 $('#size-chart').click( function() {
@@ -52,8 +52,8 @@ $('body').click(function (event) {
       cartClose();
      }
      if ($('.mobile-nav1').is(":visible")) {
-      if ($('.mobile-nav1').hasClass('slide-in')) {
-        $(".mobile-nav1").removeClass('slide-in').addClass('slide-out');
+      if ($('.mobile-nav1').hasClass('slide-in-left')) {
+        $(".mobile-nav1").removeClass('slide-in-left').addClass('slide-out-left');
       }     
     }
       $('body').removeClass('freeze-frame')
