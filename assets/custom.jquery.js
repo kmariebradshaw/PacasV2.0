@@ -27,9 +27,9 @@ $('#mobile-drawer-close').click(function() {
 
 $('.collection-prod').click(function() {
   event.preventDefault();
+  console.log('hit')
   $(this).siblings('.childlink').slideToggle();
-  $(this).css(':after', 'transform:rotate(90deg)')
-  $(this).children('span').text($(this).children('span').text() == '◯' ? '⬤' : '◯')
+  $(".fr", this).toggleClass('rotate90')
 });
 // sizing chart
 $('#size-chart').click( function() {
