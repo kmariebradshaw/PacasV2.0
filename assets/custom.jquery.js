@@ -52,8 +52,8 @@ $('body').click(function (event) {
       cartClose();
      }
      if ($('.mobile-nav1').is(":visible")) {
-      if ($('.mobile-nav1').hasClass('slide-in')) {
-        $(".mobile-nav1").removeClass('slide-in').addClass('slide-out');
+      if ($('.mobile-nav1').hasClass('slide-in-left')) {
+        $(".mobile-nav1").removeClass('slide-in-left').addClass('slide-out-left');
       }     
     }
       $('body').removeClass('freeze-frame')
