@@ -40,6 +40,7 @@
 .asfs { align-self: flex-start; }
 .fr { float: right; }
 .clickable { cursor: pointer; }
+.vam { vertical-align: middle }
 body { 
   margin: 0;
   color:  #7b8284;
@@ -1211,9 +1212,20 @@ table .lg { background-color: #d1cdcd; }
 }
 #live-feed-snippet div {
     display: inline-block;
-    margin: 1%;
+    margin-right: 1%;
     width: 200px;
+    vertical-align: middle;
 }
-
+#live-feed-wrapper { padding: 50px 50px 50px 45px; }
+#live-feed-wrapper .left-arrow {
+    position: absolute;
+    left: 20px;
+    margin-top: 95px;
+}
+#live-feed-wrapper .right-arrow {
+    position: absolute;
+    right: 20px;
+    margin-top: -150px;
+}
 
 
