@@ -11,6 +11,49 @@ $(window).scroll(function(){
 
     }
 });
+// desktop header collections 
+$('#dnav a p').hover(function() {
+  $('#dnav a p').removeClass('border-bottom-darkgray')
+  $('nav').addClass('fixed-nav-collections')
+  $('main').addClass('upper-pad-collections')
+  $(this).addClass('border-bottom-darkgray')
+  if ($(this).hasClass('mens')) {
+    $('nav').addClass('fixed-nav background-white')
+    $('.desktop-collections').hide();
+    $('.mens').show();
+  }
+  else if ($(this).hasClass('womens')) {
+    $('nav').addClass('fixed-nav background-white')
+    $('.desktop-collections').hide();
+    $('.womens').show();
+  }
+  else if ($(this).hasClass('kids')) {
+    $('nav').addClass('fixed-nav background-white')
+    $('.desktop-collections').hide();
+    $('.kids').show();
+  }
+  else {
+    $('.desktop-collections').hide();
+    $('nav').removeClass('fixed-nav-collections')
+    $('main').removeClass('upper-pad-collections')
+  }
+})
+$(window).scroll(function() {
+  $('.desktop-collections').hide(); 
+      $('nav').removeClass('fixed-nav-collections')
+    $('main').removeClass('upper-pad-collections')
+      $('#dnav a p').removeClass('border-bottom-darkgray')
+
+})
+$('body').hover(function (event) {
+   if((!$(event.target).parent().parent().is('#dnav')) && (!$(event.target).parent().parent().is('.desktop-collections'))) {
+    $('.desktop-collections').hide()
+        $('nav').removeClass('fixed-nav-collections')
+    $('main').removeClass('upper-pad-collections')
+      $('#dnav a p').removeClass('border-bottom-darkgray')
+
+  }
+}); 
 
 // hamburger nav
 $('#hamburger').click(function(){

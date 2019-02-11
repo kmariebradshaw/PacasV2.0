@@ -11,17 +11,59 @@
 {% javascript %}
 {% endjavascript %}
 
- <nav class="fw do flex-container" id="dnav">
-  <div class="flex-container jes">
-    <a href="/collections/mens"><p class="ib">Men</p></a>
-    <a href="/collections/womens"><p class="ib">Women</p></a>
-    <a href="/collections/kids"><p class="ib">Kids</p></a>
-  </div>
-  <a href="/"><img src="{{'pacas.png' | asset_url}}"  class="jlogo"/></a>
-  <div class="flex-container jes">
-    <a href="/pages/our-story"><p class="ib">Our Story</p></a>
-    <a href="/pages/live-feed"><p class="ib">Live Feed</p></a>
-    <a href="/cart" style="z-index: 999;"><img src="{{'cart.png' | asset_url}}"class="cart-icon" /></a>
+ <nav class="fw do" id="dnav">
+  <div class="flex-container">
+    <div class="flex-container jes">
+      <a href="/collections/mens"><p class="ib mens">Men</p></a>
+      <a href="/collections/womens"><p class="ib womens">Women</p></a>
+      <a href="/collections/kids"><p class="ib kids">Kids</p></a>
+    </div>
+    <a href="/"><img src="{{'pacas.png' | asset_url}}"  class="jlogo"/></a>
+    <div class="flex-container jes">
+      <a href="/pages/our-story"><p class="ib">Our Story</p></a>
+      <a href="/pages/live-feed"><p class="ib">Live Feed</p></a>
+      <a href="/cart" style="z-index: 999;"><img src="{{'cart.png' | asset_url}}"class="cart-icon" /></a>
+    </div>
+  </div> 
+  <div class="mens desktop-collections" style="display: none;">
+    <div class="flex-container-no jcc accent-padding-to">
+        <div class="background-blue tac desktop-type-wrapper">
+          <p>Athletic</p>
+          <img src="{{'bombas_socksample.png' | asset_url}}"/>
+        </div>
+        <div class="background-blue tac desktop-type-wrapper">
+          <p>Casual</p>
+          <img src="{{'bombas_socksample.png' | asset_url}}" />
+        </div>
+         <div class="background-blue tac desktop-type-wrapper">
+          <p>Dress</p>
+          <img src="{{'bombas_socksample.png' | asset_url}}"/>
+        </div>
+      </div>
+  </div> 
+  <div class="kids desktop-collections" style="display: none;">
+    <div class="flex-container-no jcc accent-padding-to">
+        <div class="background-blue tac desktop-type-wrapper">
+          <p>Athletic</p>
+          <img src="{{'bombas_socksample.png' | asset_url}}"/>
+        </div>
+        <div class="background-blue tac desktop-type-wrapper">
+          <p>Casual</p>
+          <img src="{{'bombas_socksample.png' | asset_url}}" />
+        </div>
+      </div>
+  </div> 
+  <div class="womens desktop-collections" style="display: none;">
+    <div class="flex-container-no jcc accent-padding-to">
+        <div class="background-blue tac desktop-type-wrapper">
+          <p>Athletic</p>
+          <img src="{{'bombas_socksample.png' | asset_url}}"/>
+        </div>
+        <div class="background-blue tac desktop-type-wrapper">
+          <p>Casual</p>
+          <img src="{{'bombas_socksample.png' | asset_url}}" />
+        </div>
+      </div>
   </div> 
  </nav> 
 
