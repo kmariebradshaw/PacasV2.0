@@ -52,15 +52,18 @@
           </div>
         </div>
       </div>
-      <div class="three-fourths">
-        <div class="flex-container double-padding">
+      <div class="three-fourths fw">
+        <h3 class="nm accent-padding-tb">Athletic</h3>
+        <div class="flex-container border-bottom-gray">
           {% for product in collection.products %}
+            {% for tag in product.tags %}
+              {% if tag == "Athletic" %}
               <div class="product-collection accent-padding">
               <a href="{{ product.url | within: collection }}">
                 {% for image in product.images limit: 1 %}
                   <img src="{{ image | product_img_url: '300x300' }}"/>
                 {% endfor %}
-              </a>
+              </a> 
               <a href="{{ product.url | within: collection }}">
                 <p class=""><b>{{ product.title }}<br>{{product.type}}</b></p>
               </a>
@@ -71,9 +74,36 @@
                 {{ product.price | money }} 
               </p>
             </div>
+            {% endif %}
+            {% endfor %}
           {% endfor %} 
         </div>
-      </div>
+          <h3 class="nm accent-padding-tb">Casual</h3>
+          <div class="flex-container border-bottom-gray">
+           {% for product in collection.products %}
+            {% for tag in product.tags %}
+              {% if tag == "Casual" %}
+              <div class="product-collection accent-padding">
+              <a href="{{ product.url | within: collection }}">
+                {% for image in product.images limit: 1 %}
+                  <img src="{{ image | product_img_url: '300x300' }}"/>
+                {% endfor %}
+              </a> 
+              <a href="{{ product.url | within: collection }}">
+                <p class=""><b>{{ product.title }}<br>{{product.type}}</b></p>
+              </a>
+              <p class="">
+                {% if product.compare_at_price_max %} 
+                  <span class="strike-through">{{ product.compare_at_price | money }}</span> 
+                {% endif %}
+                {{ product.price | money }} 
+              </p>
+            </div>
+            {% endif %}
+            {% endfor %}
+          {% endfor %} 
+        </div>
+        </div>
     </section>
   </div>
 </main>
