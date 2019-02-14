@@ -12,8 +12,8 @@ $(window).scroll(function(){
     }
 });
 // desktop header collections 
-$('#dnav a p').hover(function() {
-  $('#dnav a p').removeClass('border-bottom-darkgray')
+$('#dnav a.mainlink p').hover(function() {
+  $('#dnav a.mainlink p').removeClass('border-bottom-darkgray')
   
   $(this).addClass('border-bottom-darkgray')
   if ($(this).hasClass('mens')) {
@@ -38,8 +38,8 @@ $('#dnav a p').hover(function() {
     if (!$(window).scrollTop() > 0) {
       $('main').removeClass('upper-pad')
     }
-    $('nav').removeClass('fixed-nav-collections')
-    $('.desktop-collections').hide();
+    // $('nav').removeClass('fixed-nav-collections')
+    // $('.desktop-collections').hide();
   }
 })
 $(window).scroll(function() {
