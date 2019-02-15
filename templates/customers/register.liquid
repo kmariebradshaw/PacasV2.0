@@ -1,26 +1,31 @@
+<style>
+  nav {
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,.2);
+    background: white;
+  }
+</style> 
+
 <main id="register" class="customer">	  
   {% if customer %}
     <script type="text/javascript">
       window.location = '/account/'; 
    </script>
   {% else %}
-    <section class="tac fw page-header">
-      <h2 class="text-green nmb">Create an Account</h2>
-      <h3 class="nmt"> Already have an account? <a href="/account/login" class="text-green">login here</a></h3>
+    <section class="tac fw">
+      <h3 class="">Create an Account</h3>
+      <p class="nmt"><img src="{{'paca-icon.png' | asset_url}}" class="account-icon"/>Already have an account? <a href="/account/login" class="border-bottom-gray">Login here.</a></h3>
     </section>    
-    <section>
+    <section class="accent-padding">
       {% form 'create_customer' %}
         {{ form.errors | default_errors }}
-      <h3 class="text-green"><label for="first_name ">First Name</label></h3>
-      <input type="text" value="{{ form.first_name }}" name="customer[first_name]" id="first_name" size="30" class="background-lightgray">
-      <h3 class="text-green"><label for="last_name">Last Name</label></h3>
-      <input type="text" value="{{ form.last_name }}" name="customer[last_name]" id="last_name"{% if form.errors contains 'last_name' %} class="error"{% endif %} size="30" class="background-lightgray">
-      <h3 class="text-green"><label for="email">Email Address</label></h3>
-      <input type="email" value="{{ form.email }}" name="customer[email]" id="email"{% if form.errors contains 'email' %} class="error"{% endif %} size="30" class="background-lightgray">
-       <h3 class="text-green"><label for="password">Password</label></h3>
-      <input type="password" value="" name="customer[password]" id="password"{% if form.errors contains 'password' %} class="error"{% endif %} size="30" class="background-lightgray">
+      <input type="text" value="{{ form.first_name }}" name="customer[first_name]" id="first_name" size="30" placeholder="First Name">
+      <input type="text" value="{{ form.last_name }}" name="customer[last_name]" id="last_name" {% if form.errors contains 'last_name' %} class="error"{% endif %} size="30" placeholder="Last Name">
+      <input type="email" value="{{ form.email }}" name="customer[email]" id="email"{% if form.errors contains 'email' %} class="error"{% endif %} size="30" placeholder="Email">
+      <input type="password" value="" name="customer[password]" id="password"{% if form.errors contains 'password' %} class="error"{% endif %} size="30" placeholder="Password">
       <input type="submit" value="Create">
     {% endform %}
   </section>
+    <img src="{{'account-paca.png' | asset_url}}" class="account-paca"/>
+
   {% endif %}
 </main>
