@@ -156,7 +156,7 @@ img { max-width: 100%; }
   .product-benefits .two-thirds .half { margin: 25px 15px; }
 }
 @media only screen and (min-width: 800px) {
-  .page-header { padding: 50px; }
+  .page-header { padding: 50px; box-sizing: border-box; }
   .mo { display: none; }.
   .button { width: 200px;}
   footer { padding: 50px; }
@@ -1242,5 +1242,30 @@ table .lg { background-color: #d1cdcd; }
     right: 20px;
     margin-top: -150px;
 }
-
+/* customer account */
+.customer form input[type=email], .customer form input[type=password]{
+    width: 100%;
+    line-height: 2;
+    padding: 10px;
+    border-radius: 80px;
+    border: 1px solid #d1cdcd;
+    background-color: white;
+    margin-bottom: 15px;
+    font-size: 10pt;
+    box-sizing: border-box;
+}
+.customer form input[type=submit] {
+    width: 100%;
+    border-radius: 80px;
+    line-height: 2;
+    font-size: 10pt;
+    padding: 10px;
+    border: 1px solid #7b8284;
+    background: #7b8284;
+    color: white;
+}
+.customer form {
+    max-width: 500px;
+    margin: 0 auto;
+}
 
