@@ -6,6 +6,8 @@
 </style> 
 
 <main id="login" class="customer"> 
+  <div class="double-padding-to">
+
   {% if customer %}
     <script type="text/javascript">
     window.location = '/account/'; 
@@ -13,7 +15,7 @@
   {% else %}
   <div class="login">     
     <section class="tac fw">
-      <h3 class="">Log In to Your Account</h2>
+      <h3 class="">Log In to Your Account</h3>
       <p class="tac nmt"><img src="{{'paca-icon.png' | asset_url}}" class="account-icon"/> Don't have an account? <a href="/account/register" class="border-bottom-gray" >Sign up here</a></p>
     </section>    
     <section class="accent-padding">
@@ -43,6 +45,7 @@
   </div>
   {% endif %}
   <img src="{{'account-paca.png' | asset_url}}" class="account-paca"/>
+</div>
 </main>
 
 <script type="text/javascript">
