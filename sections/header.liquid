@@ -22,7 +22,15 @@
     <div class="flex-container jes">
       <a href="/pages/our-story" class="mainlink"><p class="ib">Our Story</p></a>
       <a href="/pages/live-feed" class="mainlink"><p class="ib">Live Feed</p></a>
-      <a href="/cart" style="z-index: 999;"><img src="{{'cart.png' | asset_url}}"class="cart-icon" /></a>
+      <div>
+        {% if customer %}
+          <a href="/account">
+        {% else %}
+          <a href="/account/login">
+        {% endif %}
+          <img src="{{'account.png' | asset_url}}" id="account-pal" class="cart-icon" />
+        </a>
+        <a href="/cart" style="z-index: 999;"><img src="{{'cart.png' | asset_url}}"class="cart-icon" /></a>
     </div>
   </div> 
   <div class="mens desktop-collections" style="display: none;">
