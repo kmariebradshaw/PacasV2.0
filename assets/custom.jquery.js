@@ -35,6 +35,7 @@ $('#dnav a.mainlink p').hover(function() {
     $('.kids').show();
   }
   else {
+    $('.desktop-collections').hide();
     if (!$(window).scrollTop() > 0) {
       $('main').removeClass('upper-pad')
     }
