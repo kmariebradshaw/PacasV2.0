@@ -1,17 +1,22 @@
+<style>
+  nav {
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,.2);
+    background: white;
+  }
+</style> 
 <main id="account-addresses" class="customer">       
 <section class="index-padding flex-container">
-<div class="third accent-padding">
-  <div class="title-border"></div>
-    <h2>Your Account</h2>
-    <ul>
-      <li><h3><a href="/account" class="text-green"">your orders</a></h3></li>
-      <li><h3><a href="/account/addresses" class="current text-green">view addresses</a></h3></li>
-      <li><h3><a href="/pages/contact-us" class="text-green">contact Gekks</a></h3></li>
-      <li><h3><a href="/account/logout" class="text-green" id="customer_logout_link">logout</a></h3></li>
-    </ul>
-  </div>
-  <div class="two-thirds accent-padding background-lightgray tac">
-    <h2 class="text-green nmb">Manage Addresses</h2>
+   <div class="third accent-padding">
+        <h3 class="accent">Your Account</h3>
+        <ul>
+          <li><h4><a href="/account">Your Orders</a></h4></li>
+          <li><h4><a href="/account/addresses" class="current">View Addresses</a></h4></li>
+          <li><h4><a href="/pages/contact-us">Contact Pacas</a></h4></li>
+          <li><h4><a href="/account/logout" id="customer_logout_link">Logout</a></h4></li>
+        </ul>
+      </div>
+  <div class="two-thirds accent-padding border-lightgray " id="order-history">
+    <h4 class="nmb">Manage Addresses</h4>
     <p class="action-add"><a href="#add" onclick="showAddAddress();">Add New Address</a></p>
     <div id="add-address">
       {% form 'customer_address', customer.new_address %}
@@ -47,9 +52,10 @@
       {% for address in customer.addresses %}
         <div id="view_address_{{address.id}}" class="border-white address-list">
           <div class="view_address">
-            <p><b>{{ address.street }}</b> {% if address == customer.default_address %}<span class="default_address note">(Default Address)</span>{% endif %}<br/>
+            <p><b>{{ address.street }}</b> 
+              {% if address == customer.default_address %}<span class="default_address note">(Default Address)</span>{% endif %}<br/>
             {{ address.first_name }} {{address.last_name }}<br/>
-            {% if address.company != '' %}{{ address.company }}<br/>{% endif %}
+            {% if address.company != ''%}{{ address.company }}<br/>{% endif %}
             {{ address.street }}<br/>
             {{ address.city }}{% if address.province_code %}, {{ address.province_code }}{% endif %}<br/>
             {{ address.country }} {{ address.zip }}<br/>
