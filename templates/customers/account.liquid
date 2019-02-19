@@ -1,17 +1,22 @@
+<style>
+  nav {
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,.2);
+    background: white;
+  }
+</style> 
 <main id="account" class="customer">	     
-	<section class="index-padding flex-container">
+	<section class="index-padding flex-container-do">
     <div class="third accent-padding">
-      <div class="title-border"></div>
-        <h2>Your Account</h2>
+        <h3 class="accent">Your Account</h3>
         <ul>
-          <li><h3><a href="/account" class="current text-green"">your orders</a></h3></li>
-          <li><h3><a href="/account/addresses" class="text-green">view addresses</a></h3></li>
-          <li><h3><a href="/pages/contact-us" class="text-green">contact Gekks</a></h3></li>
-          <li><h3><a href="/account/logout" class="text-green" id="customer_logout_link">logout</a></h3></li>
+          <li><h4><a href="/account" class="current">Your Orders</a></h4></li>
+          <li><h4><a href="/account/addresses">View Addresses</a></h4></li>
+          <li><h4><a href="/pages/contact-us">Contact Pacas</a></h4></li>
+          <li><h4><a href="/account/logout" id="customer_logout_link">Logout</a></h4></li>
         </ul>
       </div>
-      <div class="two-thirds accent-padding background-lightgray tac">
-        <h2 class="text-green nmt">Order History</h2>
+      <div class="two-thirds accent-padding border-lightgray" id="order-history">
+        <h4 class="nmt">Order History</h4>
         {% if customer.orders.size !=0 %}
           <table class="order-history">
             <thead>
@@ -22,7 +27,7 @@
                 <th class="total">Total</th>
               </tr>
             </thead>
-             <tbody>
+            <tbody>
             {% for order in customer.orders %}
                 <tr>
                     <td class="order-number">{{ order.name | link_to: order.customer_url }}</td>
@@ -40,7 +45,7 @@
             </tbody>
           </table>
         {% else %}
-          <h3>You haven't placed any orders yet.</h3>
+          <p class="nmb">You haven't placed any orders yet.</p>
         {% endif%}
       </div>
    </section>
