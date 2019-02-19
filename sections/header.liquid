@@ -166,5 +166,12 @@
   <div class="accent-padding border-bottom-gray">
     <a href="/pages/live-feed"><h4 class="tac">Live Feed</h4></a>
   </div>
+  <div class="accent-padding border-bottom-gray">
+    {% if customer %}
+      <a href="/account"><h4 class="tac">View Account</h4></a>
+    {% else %}
+      <a href="/account/login"><h4 class="tac">Log In</h4></a>
+    {% endif %}
+  </div>
 </div>
 
