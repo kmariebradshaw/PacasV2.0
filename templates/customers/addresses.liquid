@@ -54,7 +54,7 @@
             {{ address.phone }}</p>
           </div>
           <p class="address-actions">
-            <span class="action-edit">{{ "Edit" | edit_customer_address_link: address.id }}</span> / <span class="action-delete">{{ "Delete" | delete_customer_address_link: address.id }}</span>
+            <span class="action-edit" onclick="addAddressHide()">{{ "Edit" | edit_customer_address_link: address.id }}</span> / <span class="action-delete">{{ "Delete" | delete_customer_address_link: address.id }}</span>
           </p>
       </div>
       <div id="edit_address_{{address.id}}" class="customer-address edit-address" style="display: none">
@@ -110,5 +110,11 @@
           $('.action-add').show();
           return false;
       }
+      function addAddressHide() {
+        $('.action-add').hide();
+      }
+      $('.edit-address .back').click(function() {
+        $('.action-add').show();
+      })
     </script>
 </main>
