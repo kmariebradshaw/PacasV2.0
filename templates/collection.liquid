@@ -1,4 +1,16 @@
+
+
  <main id="c{{ collection.id }}" class="collection">
+  {%for tag in collection.tags %}
+    {% case tag %} 
+      {% when 'Athletic' %}
+        {% assign athletic = true %}
+      {% when 'Casual' %}
+        {% assign casual = true %}
+      {% when 'Dress' %}
+        {% assign dress = true %}
+    {% endcase %}
+  {% endfor %}
     <section class="page-header flex-container-no">
       <div class="half"></div>
       <div class="half">
@@ -52,57 +64,61 @@
         </div>
       </div>
       <div class="three-fourths fw">
-        <h3 class="nm accent-padding-tb">Athletic</h3>
-        <div class="flex-container border-bottom-gray">
-      {% for product in collection.products %}
-        {% for tag in product.tags %}
-          {% if tag == "Athletic" %}
-              <div class="product-collection accent-padding">
-                <a href="{{ product.url | within: collection }}">
-                  {% for image in product.images limit: 1 %}
-                    <img src="{{ image | product_img_url: '300x300' }}"/>
-                  {% endfor %}
-                </a> 
-                <a href="{{ product.url | within: collection }}">
-                  <p class=""><b>{{ product.title }}<br>{{product.type}}</b></p>
-                </a>
-                <p class="">
-                  {% if product.compare_at_price_max %} 
-                    <span class="strike-through">{{ product.compare_at_price | money }}</span> 
-                  {% endif %}
-                  {{ product.price | money }} 
-                </p>
-              </div>
-          {% endif %}
-        {% endfor %}
-      {% endfor %} 
-             </div>
+        {% if athletic == true %}
+          <h3 class="nm accent-padding-tb">Athletic</h3>
+          <div class="flex-container border-bottom-gray">
+            {% for product in collection.products %}
+              {% for tag in product.tags %}
+                {% if tag == "Athletic" %}
+                    <div class="product-collection accent-padding">
+                      <a href="{{ product.url | within: collection }}">
+                        {% for image in product.images limit: 1 %}
+                          <img src="{{ image | product_img_url: '300x300' }}"/>
+                        {% endfor %}
+                      </a> 
+                      <a href="{{ product.url | within: collection }}">
+                        <p class=""><b>{{ product.title }}<br>{{product.type}}</b></p>
+                      </a>
+                      <p class="">
+                        {% if product.compare_at_price_max %} 
+                          <span class="strike-through">{{ product.compare_at_price | money }}</span> 
+                        {% endif %}
+                        {{ product.price | money }} 
+                      </p>
+                    </div>
+                {% endif %}
+              {% endfor %}
+            {% endfor %} 
+           </div>
+         {% endif %}
+         {% if casual == true %}
             <h3 class="nm accent-padding-tb">Casual</h3>
             <div class="flex-container border-bottom-gray">
-      {% for product in collection.products %}
-        {% for tag in product.tags %}
-          {% if tag == "Casual" %}
-              <div class="product-collection accent-padding">
-                <a href="{{ product.url | within: collection }}">
-                  {% for image in product.images limit: 1 %}
-                    <img src="{{ image | product_img_url: '300x300' }}"/>
-                  {% endfor %}
-                </a> 
-                <a href="{{ product.url | within: collection }}">
-                  <p class=""><b>{{ product.title }}<br>{{product.type}}</b></p>
-                </a>
-                <p class="">
-                  {% if product.compare_at_price_max %} 
-                    <span class="strike-through">{{ product.compare_at_price | money }}</span> 
+              {% for product in collection.products %}
+                {% for tag in product.tags %}
+                  {% if tag == "Casual" %}
+                      <div class="product-collection accent-padding">
+                        <a href="{{ product.url | within: collection }}">
+                          {% for image in product.images limit: 1 %}
+                            <img src="{{ image | product_img_url: '300x300' }}"/>
+                          {% endfor %}
+                        </a> 
+                        <a href="{{ product.url | within: collection }}">
+                          <p class=""><b>{{ product.title }}<br>{{product.type}}</b></p>
+                        </a>
+                        <p class="">
+                          {% if product.compare_at_price_max %} 
+                            <span class="strike-through">{{ product.compare_at_price | money }}</span> 
+                          {% endif %}
+                          {{ product.price | money }} 
+                        </p>
+                      </div>
                   {% endif %}
-                  {{ product.price | money }} 
-                </p>
-              </div>
+                {% endfor %}
+              {% endfor %} 
+            </div>
           {% endif %}
-        {% endfor %}
-      {% endfor %} 
-             </div>
-      {% if collection.title == "Men's" %}
+      {% if dress == true  %}
             <h3 class="nm accent-padding-tb">Dress</h3>
             <div class="flex-container border-bottom-gray">
       {% for product in collection.products %}
