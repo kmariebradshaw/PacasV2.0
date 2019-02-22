@@ -1,6 +1,11 @@
+<!-- 
+Filter packs
+Filter colors
+Only show relevant Filters 
+Add in a shop all button to the nave 
+Mobile styles -->
 
-
- <main id="c{{ collection.id }}" class="collection">
+<main id="c{{ collection.id }}" class="collection">
   {%for tag in collection.tags %}
     {% case tag %} 
       {% when 'Athletic' %}
@@ -49,15 +54,15 @@
         </div>
         <div class=" accent-padding-tb">
           <p class="nmt"><b>Style</b></p>
-          <div class="flex-container-no" id="athletic">
+          <div class="flex-container-no style-filter clickable" id="athletic">
             <div class="collection-circle"></div>
-            <p class="nm">Athletic</p>
+            <p class="nm">Athletic</p> 
           </div>
-          <div class="flex-container-no" id="casual">
+          <div class="flex-container-no style-filter clickable" id="casual">
             <div class="collection-circle"></div>
             <p class="nm">Casual</p>
           </div>
-          <div class="flex-container-no" id="dress">
+          <div class="flex-container-no style-filter clickable" id="dress">
             <div class="collection-circle"></div>
             <p class="nm">Dress</p>
           </div>
@@ -65,8 +70,8 @@
       </div>
       <div class="three-fourths fw">
         {% if athletic == true %}
-          <h3 class="nm accent-padding-tb">Athletic</h3>
-          <div class="flex-container border-bottom-gray">
+          <h3 class="nm accent-padding-tb athletic-tag">Athletic</h3>
+          <div class="flex-container border-bottom-gray athletic-tag">
             {% for product in collection.products %}
               {% for tag in product.tags %}
                 {% if tag == "Athletic" %}
@@ -92,8 +97,8 @@
            </div>
          {% endif %}
          {% if casual == true %}
-            <h3 class="nm accent-padding-tb">Casual</h3>
-            <div class="flex-container border-bottom-gray">
+            <h3 class="nm accent-padding-tb casual-tag">Casual</h3>
+            <div class="flex-container border-bottom-gray casual-tag">
               {% for product in collection.products %}
                 {% for tag in product.tags %}
                   {% if tag == "Casual" %}
@@ -119,8 +124,8 @@
             </div>
           {% endif %}
       {% if dress == true  %}
-            <h3 class="nm accent-padding-tb">Dress</h3>
-            <div class="flex-container border-bottom-gray">
+            <h3 class="nm accent-padding-tb dress-tag">Dress</h3>
+            <div class="flex-container border-bottom-gray dress-tag">
       {% for product in collection.products %}
         {% for tag in product.tags %}
           {% if tag == "Dress" %}
@@ -146,8 +151,66 @@
         
         </div>
         {% endif %}
-        </div>
+        </div> 
         </div>
     </section>
   </div>
 </main>
+<script>
+  function filterCollections(collection, selected) {
+    // uses the collection id from the filter to locate everything that has that tag using element classes
+    // e.g. .athletic-tag
+    var collectionSegment = "." + collection + "-tag"
+    var selectedCount = 0 
+    // determines how many styles are selected
+    $('.style-filter .collection-circle').each(function() {
+      if ($(this).hasClass('selected')) {
+        selectedCount += 1 
+      }
+    })
+    // if only one is selected, only show that one
+    if (selectedCount == 1) {
+      if (selected == true) {
+        $(collectionSegment).siblings().hide()
+        $(collectionSegment).show()
+      }
+      else {
+        $(collectionSegment).hide(); 
+      }
+
+    }
+    // if none are selected show them all 
+    else if (selectedCount == 0 ) {
+      $(collectionSegment).siblings().show()
+    }
+    // otherwise hide the ones that aren't selected and show the ones that are
+    else {
+      if (selected == true ) {
+        $(collectionSegment).show()
+      }
+      else {
+        $(collectionSegment).hide(); 
+      }
+    }
+  }
+  $('.style-filter').click(function() {
+    $(this).children('.collection-circle').toggleClass('selected'); 
+    var selection = $(this).attr("id")
+    // determining whether it is selected or unselected and passing that as a variable to the filterCollections function to determine whether we should show or hide
+    if ($(this).children('.collection-circle').hasClass('selected')) {
+      var selected = true 
+    }
+    else {
+      var selected = false 
+    }
+    filterCollections(selection, selected)
+  })
+
+</script>
+
+
+
+
+
+
+
