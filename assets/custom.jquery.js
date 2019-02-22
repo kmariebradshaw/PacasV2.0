@@ -11,6 +11,7 @@ $(window).scroll(function(){
 
     }
 });
+
 // desktop header collections 
 $('#dnav a.mainlink p').hover(function() {
   $('#dnav a.mainlink p').removeClass('border-bottom-darkgray')
@@ -38,6 +39,7 @@ $('#dnav a.mainlink p').hover(function() {
     $('.desktop-collections').hide();
     if (!$(window).scrollTop() > 0) {
       $('main').removeClass('upper-pad')
+      $('nav').removeClass('fixed-nav-collections')
     }
     // $('nav').removeClass('fixed-nav-collections')
     // $('.desktop-collections').hide();
