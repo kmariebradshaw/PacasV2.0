@@ -168,6 +168,8 @@ img { max-width: 100%; }
     padding: 0 50px;
     justify-content: center;
   }
+  .collection .quarter { max-width: 200px; }
+  .collection .three-fourths { padding: 50px 20px; }
   #cart-order-summary {margin-left: 60px;}
   table td, table th { padding: 15px; }
   .product-benefits .two-thirds  {
@@ -199,11 +201,22 @@ img { max-width: 100%; }
     background-image: url("{{'flow-paca.png' | asset_url}}"); 
     background-position: bottom right;
   }
+  .collection .quarter  {
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    display: none;
+}
   #account-addresses .third, #account .third, #account-order .third{
     width: 100%;
     text-align: center;
     box-sizing: border-box;
 }
+.collection .three-fourths { 
+  padding: 0px 20px 20px 20px; 
+  box-sizing: border-box;
+}
+
 #account-addresses .two-thirds, #account .two-thirds, #account-order .two-thirds {
   width: 100%;
   box-sizing: border-box;
@@ -901,14 +914,13 @@ body section #shaver.rotate { transform: rotate(-10deg); }
     max-width: fit-content;
 }
 .selected { background: #d1cdcd; }
-.collection .quarter { max-width: 200px; }
-.collection .three-fourths { padding: 50px 20px; }
 .collection .three-fourths .flex-container { padding-bottom: 50px; }
 .border-bottom-darkgray { border-bottom: 2px solid #7b8284; }
 .border-bottom-gray { border-bottom: 1px solid  #d1cdcd;}
 
 .collection .page-header {
   background-repeat: no-repeat; 
+  min-height: 250px;
 }
 /*womens*/
 #c110002667620 .page-header {
@@ -1385,8 +1397,15 @@ table .lg { background-color: #d1cdcd; }
     list-style: none;
     padding-left: 0;
 }
+.icon-small { width: 30px; }
 
-
+#filter-wrapper {
+    border: 1px solid #d1cdcd;
+    padding: 10px;
+    border-radius: 80px;
+    width: 300px;
+    margin: 50px auto 30px auto;
+}
 
 #account .current, #account-addresses .current { border-bottom: 2px solid  #d1cdcd; padding-bottom: 2px; }
 #order-history { border-radius: 20px; }

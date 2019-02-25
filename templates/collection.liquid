@@ -1,6 +1,5 @@
 <!-- 
 Filter colors
-Only show relevant Filters 
 Mobile styles -->
 
 <main id="c{{ collection.id }}" class="collection">
@@ -20,7 +19,12 @@ Mobile styles -->
         <h2 class="tac">{{collection.title}} Socks</h2>
       </div>
     </section>
-    <section class="flex-container" id="collection-wrapper">
+    <section class="flex-container-do" id="collection-wrapper">
+      <div class="mo jes flex-container-no clickable" id="filter-wrapper">
+        <img src="{{'paca-icon.png' | asset_url}}" class="icon-small" />
+        <p>Filter</p>
+        <p id="filter-count">(<span>0</span>)</p>
+      </div>
       <div class="quarter double-padding">
         <div class="border-bottom-gray accent-padding-tb">
           <h3 class="nm">{{collection.title}}</h3>
@@ -158,12 +162,12 @@ Mobile styles -->
   </div>
 </main>
 <script>
-
   function filterCollections(collection, selected) {
     // uses the collection id from the filter to locate everything that has that tag using element classes
     // e.g. .athletic-tag
     var collectionSegment = "." + collection + "-tag"
     var selectedCount = 0 
+
     // determines how many styles are selected
     $('.style-filter .collection-circle').each(function() {
       if ($(this).hasClass('selected')) {
@@ -251,9 +255,18 @@ Mobile styles -->
     }
     filterCollections(selection, selected)
   })
-
-
-
+  $('#filter-wrapper').click(function() {
+    $('.quarter').slideToggle(); 
+  });
+$(".pack-filter, .style-filter").click(function() {
+  totalSelected = 0 
+  $('.collection-circle').each(function() {
+    if ($(this).hasClass('selected')) {
+      totalSelected += 1
+    }
+   $('#filter-wrapper p span').text(totalSelected)
+  }); 
+})
 </script>
 
 
