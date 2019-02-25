@@ -2,7 +2,6 @@
 Filter packs
 Filter colors
 Only show relevant Filters 
-Add in a shop all button to the nave 
 Mobile styles -->
 
 <main id="c{{ collection.id }}" class="collection">
@@ -20,7 +19,6 @@ Mobile styles -->
       <div class="half"></div>
       <div class="half">
         <h2 class="tac">{{collection.title}} Socks</h2>
-        <p class="tac">Want to donate some socks to a local hospital?<br>Click <b>here</b> to pickout Paca styles</p>
       </div>
     </section>
     <section class="flex-container" id="collection-wrapper">
@@ -75,7 +73,7 @@ Mobile styles -->
             {% for product in collection.products %}
               {% for tag in product.tags %}
                 {% if tag == "Athletic" %}
-                    <div class="product-collection accent-padding">
+                    <div class="product-collection accent-padding" data-product-type="{{product.type}}">
                       <a href="{{ product.url | within: collection }}">
                         {% for image in product.images limit: 1 %}
                           <img src="{{ image | product_img_url: '300x300' }}"/>
@@ -102,7 +100,7 @@ Mobile styles -->
               {% for product in collection.products %}
                 {% for tag in product.tags %}
                   {% if tag == "Casual" %}
-                      <div class="product-collection accent-padding">
+                      <div class="product-collection accent-padding" data-product-type="{{product.type}}">
                         <a href="{{ product.url | within: collection }}">
                           {% for image in product.images limit: 1 %}
                             <img src="{{ image | product_img_url: '300x300' }}"/>
@@ -129,7 +127,7 @@ Mobile styles -->
       {% for product in collection.products %}
         {% for tag in product.tags %}
           {% if tag == "Dress" %}
-              <div class="product-collection accent-padding">
+              <div class="product-collection accent-padding" data-product-type="{{product.type}}">
                 <a href="{{ product.url | within: collection }}">
                   {% for image in product.images limit: 1 %}
                     <img src="{{ image | product_img_url: '300x300' }}"/>
