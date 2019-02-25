@@ -1,8 +1,5 @@
 <!-- 
-Filter packs
 Filter colors
-Only show relevant Filters 
-Add in a shop all button to the nave 
 Mobile styles -->
 
 <main id="c{{ collection.id }}" class="collection">
@@ -11,7 +8,7 @@ Mobile styles -->
       {% when 'Athletic' %}
         {% assign athletic = true %}
       {% when 'Casual' %}
-        {% assign casual = true %}
+        {% assign casual = true  %}
       {% when 'Dress' %}
         {% assign dress = true %}
     {% endcase %}
@@ -20,25 +17,29 @@ Mobile styles -->
       <div class="half"></div>
       <div class="half">
         <h2 class="tac">{{collection.title}} Socks</h2>
-        <p class="tac">Want to donate some socks to a local hospital?<br>Click <b>here</b> to pickout Paca styles</p>
       </div>
     </section>
-    <section class="flex-container" id="collection-wrapper">
+    <section class="flex-container-do" id="collection-wrapper">
+      <div class="mo jes flex-container-no clickable" id="filter-wrapper">
+        <img src="{{'paca-icon.png' | asset_url}}" class="icon-small" />
+        <p>Filter</p>
+        <p id="filter-count">(<span>0</span>)</p>
+      </div>
       <div class="quarter double-padding">
         <div class="border-bottom-gray accent-padding-tb">
           <h3 class="nm">{{collection.title}}</h3>
         </div>
         <div class="border-bottom-gray accent-padding-tb">
           <p class="nmt"><b>Pack Size</b></p>
-          <div class="flex-container-no" id="single">
+          <div class="flex-container-no pack-filter" id="Single Pack">
             <div class="collection-circle"></div>
             <p class="nm">Single</p>
           </div>
-          <div class="flex-container-no" id="four-pack">
+          <div class="flex-container-no pack-filter" id="4 - Pack">
             <div class="collection-circle"></div>
             <p class="nm">4 - Pack</p>
           </div>
-          <div class="flex-container-no" id="eight-pack">
+          <div class="flex-container-no pack-filter" id="8 - Pack">
             <div class="collection-circle"></div>
             <p class="nm">8 - Pack</p>
           </div>
@@ -52,6 +53,7 @@ Mobile styles -->
           <img src="{{'white.png' | asset_url}}" class="collection-color border-gray" id="white" />
           <img src="{{'black.png' | asset_url}}" class="collection-color" id="black" />
         </div>
+        {% if collection.title == "Women's" or collection.title == "Men's" or collection.title == "Kids'" %}
         <div class=" accent-padding-tb">
           <p class="nmt"><b>Style</b></p>
           <div class="flex-container-no style-filter clickable" id="athletic">
@@ -62,20 +64,23 @@ Mobile styles -->
             <div class="collection-circle"></div>
             <p class="nm">Casual</p>
           </div>
+          {% if collection.title == "Men's" %}
           <div class="flex-container-no style-filter clickable" id="dress">
             <div class="collection-circle"></div>
             <p class="nm">Dress</p>
           </div>
+          {% endif %}
         </div>
+        {% endif %}
       </div>
       <div class="three-fourths fw">
         {% if athletic == true %}
           <h3 class="nm accent-padding-tb athletic-tag">Athletic</h3>
-          <div class="flex-container border-bottom-gray athletic-tag">
+          <div class="border-bottom-gray athletic-tag">
             {% for product in collection.products %}
               {% for tag in product.tags %}
                 {% if tag == "Athletic" %}
-                    <div class="product-collection accent-padding">
+                    <div class="product-collection accent-padding" data-product-type="{{product.type}}">
                       <a href="{{ product.url | within: collection }}">
                         {% for image in product.images limit: 1 %}
                           <img src="{{ image | product_img_url: '300x300' }}"/>
@@ -98,11 +103,11 @@ Mobile styles -->
          {% endif %}
          {% if casual == true %}
             <h3 class="nm accent-padding-tb casual-tag">Casual</h3>
-            <div class="flex-container border-bottom-gray casual-tag">
+            <div class="border-bottom-gray casual-tag">
               {% for product in collection.products %}
                 {% for tag in product.tags %}
                   {% if tag == "Casual" %}
-                      <div class="product-collection accent-padding">
+                      <div class="product-collection accent-padding" data-product-type="{{product.type}}">
                         <a href="{{ product.url | within: collection }}">
                           {% for image in product.images limit: 1 %}
                             <img src="{{ image | product_img_url: '300x300' }}"/>
@@ -125,11 +130,11 @@ Mobile styles -->
           {% endif %}
       {% if dress == true  %}
             <h3 class="nm accent-padding-tb dress-tag">Dress</h3>
-            <div class="flex-container border-bottom-gray dress-tag">
+            <div class="border-bottom-gray dress-tag">
       {% for product in collection.products %}
         {% for tag in product.tags %}
           {% if tag == "Dress" %}
-              <div class="product-collection accent-padding">
+              <div class="product-collection accent-padding" data-product-type="{{product.type}}">
                 <a href="{{ product.url | within: collection }}">
                   {% for image in product.images limit: 1 %}
                     <img src="{{ image | product_img_url: '300x300' }}"/>
@@ -162,6 +167,7 @@ Mobile styles -->
     // e.g. .athletic-tag
     var collectionSegment = "." + collection + "-tag"
     var selectedCount = 0 
+
     // determines how many styles are selected
     $('.style-filter .collection-circle').each(function() {
       if ($(this).hasClass('selected')) {
@@ -193,6 +199,50 @@ Mobile styles -->
       }
     }
   }
+  function filterPacks(pack, selected) {
+    var packSegment =  '[data-product-type="' + pack + '"]'
+    var selectedCount = 0 
+    $('.pack-filter .collection-circle').each(function() {
+      if ($(this).hasClass('selected')) {
+        selectedCount += 1 
+      }
+    })
+    if (selectedCount == 1) {
+      if (selected == true) {
+         $('.product-collection').hide() 
+        $(packSegment).show()
+      }
+      else {
+        $(packSegment).hide(); 
+      }
+
+    }
+    // if none are selected show them all 
+    else if (selectedCount == 0 ) {
+      $('.product-collection').show()
+    }
+    // otherwise hide the ones that aren't selected and show the ones that are
+    else {
+      if (selected == true ) {
+        $(packSegment).show()
+      }
+      else {
+        $(packSegment).hide(); 
+      }
+    }
+  }
+
+  $('.pack-filter').click(function() {
+    $(this).children('.collection-circle').toggleClass('selected')
+    var selection = $(this).attr("id")
+    if ($(this).children('.collection-circle').hasClass('selected')) {
+      var selected = true 
+    }
+    else {
+      var selected = false 
+    }
+    filterPacks(selection, selected)
+  })
   $('.style-filter').click(function() {
     $(this).children('.collection-circle').toggleClass('selected'); 
     var selection = $(this).attr("id")
@@ -205,7 +255,18 @@ Mobile styles -->
     }
     filterCollections(selection, selected)
   })
-
+  $('#filter-wrapper').click(function() {
+    $('.quarter').slideToggle(); 
+  });
+$(".pack-filter, .style-filter").click(function() {
+  totalSelected = 0 
+  $('.collection-circle').each(function() {
+    if ($(this).hasClass('selected')) {
+      totalSelected += 1
+    }
+   $('#filter-wrapper p span').text(totalSelected)
+  }); 
+})
 </script>
 
 
