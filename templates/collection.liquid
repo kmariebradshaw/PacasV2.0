@@ -2,6 +2,7 @@
 Filter packs
 Filter colors
 Only show relevant Filters 
+Desktop Styles
 Mobile styles -->
 
 <main id="c{{ collection.id }}" class="collection">
@@ -10,7 +11,7 @@ Mobile styles -->
       {% when 'Athletic' %}
         {% assign athletic = true %}
       {% when 'Casual' %}
-        {% assign casual = true %}
+        {% assign casual = true  %}
       {% when 'Dress' %}
         {% assign dress = true %}
     {% endcase %}
@@ -28,15 +29,15 @@ Mobile styles -->
         </div>
         <div class="border-bottom-gray accent-padding-tb">
           <p class="nmt"><b>Pack Size</b></p>
-          <div class="flex-container-no" id="single">
+          <div class="flex-container-no pack-filter" id="Single Pack">
             <div class="collection-circle"></div>
             <p class="nm">Single</p>
           </div>
-          <div class="flex-container-no" id="four-pack">
+          <div class="flex-container-no pack-filter" id="4 - Pack">
             <div class="collection-circle"></div>
             <p class="nm">4 - Pack</p>
           </div>
-          <div class="flex-container-no" id="eight-pack">
+          <div class="flex-container-no pack-filter" id="8 - Pack">
             <div class="collection-circle"></div>
             <p class="nm">8 - Pack</p>
           </div>
@@ -155,6 +156,7 @@ Mobile styles -->
   </div>
 </main>
 <script>
+
   function filterCollections(collection, selected) {
     // uses the collection id from the filter to locate everything that has that tag using element classes
     // e.g. .athletic-tag
@@ -191,6 +193,50 @@ Mobile styles -->
       }
     }
   }
+  function filterPacks(pack, selected) {
+    var packSegment =  '[data-product-type="' + pack + '"]'
+    var selectedCount = 0 
+    $('.pack-filter .collection-circle').each(function() {
+      if ($(this).hasClass('selected')) {
+        selectedCount += 1 
+      }
+    })
+    if (selectedCount == 1) {
+      if (selected == true) {
+         $('.product-collection').hide() 
+        $(packSegment).show()
+      }
+      else {
+        $(packSegment).hide(); 
+      }
+
+    }
+    // if none are selected show them all 
+    else if (selectedCount == 0 ) {
+      $('.product-collection').show()
+    }
+    // otherwise hide the ones that aren't selected and show the ones that are
+    else {
+      if (selected == true ) {
+        $(packSegment).show()
+      }
+      else {
+        $(packSegment).hide(); 
+      }
+    }
+  }
+
+  $('.pack-filter').click(function() {
+    $(this).children('.collection-circle').toggleClass('selected')
+    var selection = $(this).attr("id")
+    if ($(this).children('.collection-circle').hasClass('selected')) {
+      var selected = true 
+    }
+    else {
+      var selected = false 
+    }
+    filterPacks(selection, selected)
+  })
   $('.style-filter').click(function() {
     $(this).children('.collection-circle').toggleClass('selected'); 
     var selection = $(this).attr("id")
@@ -203,6 +249,8 @@ Mobile styles -->
     }
     filterCollections(selection, selected)
   })
+
+
 
 </script>
 
