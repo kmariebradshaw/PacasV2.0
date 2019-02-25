@@ -49,6 +49,7 @@ Mobile styles -->
           <img src="{{'white.png' | asset_url}}" class="collection-color border-gray" id="white" />
           <img src="{{'black.png' | asset_url}}" class="collection-color" id="black" />
         </div>
+        {% if collection.title == "Women's" or collection.title == "Men's" or collection.title == "Kids'" %}
         <div class=" accent-padding-tb">
           <p class="nmt"><b>Style</b></p>
           <div class="flex-container-no style-filter clickable" id="athletic">
@@ -59,11 +60,14 @@ Mobile styles -->
             <div class="collection-circle"></div>
             <p class="nm">Casual</p>
           </div>
+          {% if collection.title == "Men's" %}
           <div class="flex-container-no style-filter clickable" id="dress">
             <div class="collection-circle"></div>
             <p class="nm">Dress</p>
           </div>
+          {% endif %}
         </div>
+        {% endif %}
       </div>
       <div class="three-fourths fw">
         {% if athletic == true %}
