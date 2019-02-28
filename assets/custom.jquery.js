@@ -1,18 +1,4 @@
 
-// header 
-$(window).scroll(function(){
-    if ($(window).scrollTop() > 0) {
-        $('nav').addClass('fixed-nav');
-        $('main').addClass('upper-pad')
-    }
-    else {
-        $('nav').removeClass('fixed-nav');
-                $('main').removeClass('upper-pad')
-
-    }
-});
-
-
 
 // desktop header collections 
 $('#dnav a.mainlink p').hover(function() {
@@ -21,26 +7,22 @@ $('#dnav a.mainlink p').hover(function() {
   $(this).addClass('border-bottom-darkgray')
   if ($(this).hasClass('mens')) {
     $('nav').addClass('fixed-nav-collections')
-    $('main').addClass('upper-pad')
     $('.desktop-collections').hide();
     $('.mens').show();
   }
   else if ($(this).hasClass('womens')) {
         $('nav').addClass('fixed-nav-collections')
-    $('main').addClass('upper-pad')
     $('.desktop-collections').hide();
     $('.womens').show();
   }
   else if ($(this).hasClass('kids')) {
     $('nav').addClass('fixed-nav-collections')
-    $('main').addClass('upper-pad')
     $('.desktop-collections').hide();
     $('.kids').show();
   }
   else {
     $('.desktop-collections').hide();
     if (!$(window).scrollTop() > 0) {
-      $('main').removeClass('upper-pad')
       $('nav').removeClass('fixed-nav-collections')
     }
     // $('nav').removeClass('fixed-nav-collections')
@@ -58,9 +40,6 @@ $('body').click(function (event) {
     $('nav').removeClass('fixed-nav-collections')
     $('.desktop-collections').hide()
     $('#dnav a p').removeClass('border-bottom-darkgray')
-    if (!$(window).scrollTop() > 0) {
-      $('main').removeClass('upper-pad')
-    }
   }
 }); 
 
