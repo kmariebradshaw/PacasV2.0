@@ -12,6 +12,8 @@ $(window).scroll(function(){
     }
 });
 
+
+
 // desktop header collections 
 $('#dnav a.mainlink p').hover(function() {
   $('#dnav a.mainlink p').removeClass('border-bottom-darkgray')
