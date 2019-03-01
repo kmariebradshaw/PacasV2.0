@@ -1,8 +1,8 @@
  
 <main id="account-order" class="customer">       
- <section class="index-padding flex-container-do">
+ <section class="index-padding flex-container-do aifs">
    <div class="third accent-padding">
-        <h3 class="accent">Your Account</h3>
+        <h3 class="accent nmt">Your Account</h3>
         <ul>
           <li><h4><a href="/account">Your Orders</a></h4></li>
           <li><h4><a href="/account/addresses">View Addresses</a></h4></li>
@@ -11,8 +11,8 @@
         </ul>
       </div>
       <div class="two-thirds accent-padding">
-        <div class="accent-padding">
-        <h4 class="nmb">Order <b>{{ order.name }}</b></h4>
+        <div class="accent-padding-so">
+        <h4 class="nm">Order <b>{{ order.name }}</b></h4>
         {% if order.cancelled %}
           <p class="subscript nm"><b>Order cancelled on {{ order.cancelled_at | date: "%B %d, %Y %I:%M%p" }}</b></p>
         {% endif %}
