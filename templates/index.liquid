@@ -34,7 +34,7 @@
 <section class="page-header do" id="sock-preview-benefits">
  <div class="flex-container">
     <div class="sock-preview accent-padding half">
-      <div class="flex-container-no jes">
+      <div class="flex-container-no jes sock-images">
         <div class="left-arrow"><p class="large">⌃</p></div>
           <div>
             <img src="{{'bombas_socksample.png' | asset_url}}" id="athletic" style="display:none;"/>
@@ -63,6 +63,15 @@
           case "dress-socksample":
             $('#dress').show().siblings().hide(); 
             break;
+        }
+      })
+      $('#sock-preview-benefits .right-arrow').click(function() {
+        if ($('#sock-preview-benefits .sock-images img:visible').next()) {          
+          $('#sock-preview-benefits .sock-images img:visible').hide().next().show(); 
+        }
+        else {
+          $('#sock-preview-benefits .sock-images img:visible').hide()
+          $('#athletic').show();
         }
       })
     </script>
