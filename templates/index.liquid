@@ -36,15 +36,36 @@
     <div class="sock-preview accent-padding half">
       <div class="flex-container-no jes">
         <div class="left-arrow"><p class="large">⌃</p></div>
-        <img src="{{'bombas_socksample.png' | asset_url}}" />
+          <div>
+            <img src="{{'bombas_socksample.png' | asset_url}}" id="athletic" style="display:none;"/>
+            <img src="{{'bombas_socksample.png' | asset_url}}" id="casual"/>
+            <img src="{{'bombas_socksample.png' | asset_url}}" id="dress" style="display: none;"/>
+          </div>
         <div class="right-arrow"><p class="large">⌃</p></div>
       </div>
-      <div class="flex-container-no jes">
-        <p><b>Athletic</b></p>
-        <p class="current"><b>Casual</b></p>
-        <p><b>Dress</b></p>
+      <div class="flex-container-no jes sock-options">
+        <p class="clickable" id="athletic-socksample"><b>Athletic</b></p>
+        <p class="current clickable" id="casual-socksample"><b>Casual</b></p>
+        <p class="clickable" id="dress-socksample"><b>Dress</b></p>
       </div>
     </div>
+    <script>
+      $('.sock-options p').click(function() {
+        $(this).addClass('current').siblings().removeClass('current'); 
+        var imageChoice = $(this).attr("id")
+        switch(imageChoice) {
+          case "athletic-socksample":
+            $('#athletic').show().siblings().hide(); 
+            break;
+          case "casual-socksample":
+            $('#casual').show().siblings().hide(); 
+            break;
+          case "dress-socksample":
+            $('#dress').show().siblings().hide(); 
+            break;
+        }
+      })
+    </script>
    <div class="half">
     <div class="accent-padding">
         <div class="two-thirds flex-container-no paca-flip-benefits">
