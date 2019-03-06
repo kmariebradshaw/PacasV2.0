@@ -103,7 +103,9 @@
 
     
        <script>jQuery(function(){jQuery(".swatch :radio").change(function(){var t=jQuery(this).closest(".swatch").attr("data-option-index"),e=jQuery(this).val();jQuery(this).closest("form").find(".single-option-selector").eq(t).val(e).trigger("change")})});</script>
-        {% include 'klaviyo-pop' %}
+    {% unless template contains 'flow' %}
+      {% include 'klaviyo-pop' %}
+    {% endunless %}
 
     {% include 'remove-sold-out' %}
     {% include 'linked-options' %}
