@@ -417,12 +417,8 @@ img { max-width: 100%; }
 @media only screen and (min-width: 535px) and (max-width: 588px) {
   #no-itch { margin-left: 33%; }
 }
-@media only screen and (max-width: 350px) {
-    #faq .page-header { background-position: -100px;}
-
-}
-@media only screen and (min-width: 351px) and (max-width: 400px) {
-    #faq .page-header { background-position: -50px;}
+@media only screen and (max-width: 400px) {
+    #faq .page-header { background-position: bottom;}
 
 }
 @media only screen and (min-width: 401px) {
@@ -841,7 +837,7 @@ body section #shaver.rotate { transform: rotate(-10deg); }
 #faq .page-header { 
   background-image: url("{{'paca-faq.png' | asset_url}}"); 
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
 
 }
 .faq .closed + .flex-container-do { display: none !important; }
