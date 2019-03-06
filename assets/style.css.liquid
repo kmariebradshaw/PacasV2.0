@@ -122,18 +122,48 @@ img { max-width: 100%; }
     width: 400px;
     margin: 20px;
 }
+  #hd1 {
+    width: 17vw;
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+  #hd2 {
+    width: 5vw;
+    margin-top: 70px;
+    margin-left: -192px;
+}
+#hd3 {
+    margin-left: 42vw;
+    width: 11vw;
+    margin-top: -52px;
+}
   #our-story .page-header { background-size: 80% !important; height: 600px;}
   #dye { background-position: 350px; }
   body .product-benefits { background-size: contain;}
 }
 @media only screen and (min-width: 1100px) and (max-width: 1400px) {
    #paca-intro, #charity-slide { 
-    background-image: url("{{'dflow-paca.png' | asset_url}}"); 
+    background-image: url("{{'flow-paca.png' | asset_url}}"); 
     background-position: bottom left;
   }
 #faq .page-header {
     height: 500px;
     background-size: 75% !important;
+}
+#hd1 {
+    width: 13vw;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+#hd2 {
+    width: 4vw;
+    margin-top: 62px;
+    margin-left: -139px;
+}
+#hd3 {
+    margin-left: 46vw;
+    width: 9vw;
+    margin-top: -50px;
 }
   #materials-grid div, #materials-grid > img {
     height: 300px;
@@ -157,6 +187,21 @@ img { max-width: 100%; }
   #faq .page-header {
     height: 400px;
     background-size: 75% !important;
+}
+#hd1 {
+    width: 13vw;
+    margin-left: 223px;
+    margin-top: -20px;
+}
+#hd2  {
+    width: 4vw;
+    margin-top: 53px;
+    margin-left: -129px;
+}
+#hd3 {
+    margin-left: 47vw;
+    width: 8vw;
+    margin-top: -50px;
 }
   p, table, ul li { font-size: 10pt; } 
   footer { padding: 50px; }
@@ -191,6 +236,7 @@ img { max-width: 100%; }
     padding: 0 50px;
     justify-content: center;
   }
+  #materials-grid { padding: 0 50px 50px 50px; }
   .faq { padding: 50px 100px !important; }
   .collection .quarter { max-width: 200px; }
   .collection .three-fourths { padding: 50px 20px; }
@@ -202,6 +248,7 @@ img { max-width: 100%; }
   .collection .page-header { height: 400px; }
   #faq .faq .flex-container-no { align-items: flex-start; }
   .prog-bar { margin-bottom: 50px; }
+  .double-padding { padding: 50px; }
   .double-padding-tbo { padding: 50px 0 ; }
   #choose-intro {
     justify-content: center;
@@ -505,7 +552,8 @@ footer form {
 }
 .social-icons img { max-width: 30px; margin: 5px; }
 /*index page*/
- #atf-text { margin-left: 20%; }
+.heart-icons { position: absolute;}
+ #atf-text { margin-left: 10%; }
 #atf { 
   background-image: url("{{'atf.png' | asset_url}}");
   background-size: cover;
@@ -514,6 +562,7 @@ footer form {
   background-color: #fdf3ed;
   box-sizing: border-box;
 } 
+#sock-preview-benefits {box-shadow: 0px 5px 5px 0px rgba(0,0,0,.1);}
 .paca-flip-benefits  {
     border: 2px solid #f5fcfc;
     border-radius: 20px;
@@ -527,6 +576,14 @@ footer form {
     margin: 0 auto;
     display: block;
     max-width: 500px;
+}
+#shop-all-cta {
+  background-color: #ffebda;
+  background-image: url("{{'dflow-paca.png' | asset_url}}");
+  background-repeat: no-repeat;
+  background-position: 75vw bottom;
+     height: 300px;
+    background-size: contain;
 }
 #mobile-sock { margin-bottom: 50px; }
 #mission { max-width: 650px; margin: 0 auto; }
@@ -1445,6 +1502,7 @@ table .lg { background-color: #d1cdcd; }
   vertical-align: middle;
   margin-bottom: 5px;
 }
+.double-padding { padding: 50px; }
 .double-padding-to { padding-top: 50px; }
 #account-pal {
     margin-top: -20px;
