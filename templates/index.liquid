@@ -66,12 +66,15 @@
         }
       })
       $('#sock-preview-benefits .right-arrow').click(function() {
-        if ($('#sock-preview-benefits .sock-images img:visible').next()) {          
-          $('#sock-preview-benefits .sock-images img:visible').hide().next().show(); 
+        var currentImage = $('#sock-preview-benefits .sock-images img:visible'); 
+        if ($(currentImage).next().length > 0) {          
+          $(currentImage).hide().next().show();
+          $('.sock-options .current').removeClass('current').next().addClass('current')
         }
         else {
-          $('#sock-preview-benefits .sock-images img:visible').hide()
+          $(currentImage).hide()
           $('#athletic').show();
+          $('.sock-options p').siblings().removeClass('current').first().addClass('current')
         }
       })
     </script>
