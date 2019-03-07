@@ -1,3 +1,31 @@
+// index page shoe slider 
+$('.sock-options p').click(function() {
+  $(this).addClass('current').siblings().removeClass('current'); 
+  var imageChoice = $(this).attr("id")
+  switch(imageChoice) {
+    case "athletic-socksample":
+      $('#athletic').show().siblings().hide(); 
+      break;
+    case "casual-socksample":
+      $('#casual').show().siblings().hide(); 
+      break;
+    case "dress-socksample":
+      $('#dress').show().siblings().hide(); 
+      break;
+  }
+})
+$('#sock-preview-benefits .right-arrow').click(function() {
+  var currentImage = $('#sock-preview-benefits .sock-images img:visible'); 
+  if ($(currentImage).next().length > 0) {          
+    $(currentImage).hide().next().show();
+    $('.sock-options .current').removeClass('current').next().addClass('current')
+  }
+  else {
+    $(currentImage).hide()
+    $('#athletic').show();
+    $('.sock-options p').siblings().removeClass('current').first().addClass('current')
+  }
+})
 // cruding with cookies 
 function createCookie(name,value,days) {
     var expires = "";
