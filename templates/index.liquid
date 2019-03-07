@@ -31,7 +31,7 @@
   <img src="{{'sewing.jpg' | asset_url}}" class="fw third" />
 </section>
 <img src="{{'hearts-desktop3.png' | asset_url}}" class="heart-icons do" id="hd3"/>
-<section class="page-header do" id="sock-preview-benefits">
+<section class="page-header" id="sock-preview-benefits">
  <div class="flex-container">
     <div class="sock-preview accent-padding half">
       <div class="flex-container-no jes sock-images">
@@ -49,113 +49,79 @@
         <p class="clickable" id="dress-socksample"><b>Dress</b></p>
       </div>
     </div>
-    <script>
-      $('.sock-options p').click(function() {
-        $(this).addClass('current').siblings().removeClass('current'); 
-        var imageChoice = $(this).attr("id")
-        switch(imageChoice) {
-          case "athletic-socksample":
-            $('#athletic').show().siblings().hide(); 
-            break;
-          case "casual-socksample":
-            $('#casual').show().siblings().hide(); 
-            break;
-          case "dress-socksample":
-            $('#dress').show().siblings().hide(); 
-            break;
-        }
-      })
-      $('#sock-preview-benefits .right-arrow').click(function() {
-        if ($('#sock-preview-benefits .sock-images img:visible').next()) {          
-          $('#sock-preview-benefits .sock-images img:visible').hide().next().show(); 
-        }
-        else {
-          $('#sock-preview-benefits .sock-images img:visible').hide()
-          $('#athletic').show();
-        }
-      })
-    </script>
    <div class="half">
     <div class="accent-padding">
         <div class="two-thirds flex-container-no paca-flip-benefits">
           <img src="{{'crown.png' | asset_url}}" class="icon" />
-          <p class="subscript"><b>Soft as Cashmere</b></p>
+          <p class="subscript">
+            <b class="front">Soft as Cashmere</b>
+            <b class="back tac" style="display: none;">Alpaca fleece is luxurious and rare</b>
+          </p>
         </div>
         <div class="two-thirds flex-container-no paca-flip-benefits">
           <img src="{{'poof.png' | asset_url}}" class="icon" />
-          <p class="subscript"><b>Non-itchy & Hypoallergenic</b></p>
+          <p class="subscript">
+            <b class="front">Non-itchy & Hypoallergenic</b>
+            <b class="back tac" style="display: none;">Naturally smooth, grease free</b>
+          </p>
         </div>
         <div class="two-thirds flex-container-no paca-flip-benefits">
           <img src="{{'flame.png' | asset_url}}" class="icon" />
-          <p class="subscript"><b>Warmer than Wool</b></p>
+          <p class="subscript">
+            <b class="front">Warmer than Wool</b>
+            <b class="back tac" style="display: none;">Trap more heat than sheep wool</b>
+          </p>
         </div>
         <div class="two-thirds flex-container-no paca-flip-benefits">
           <img src="{{'leaf.png' | asset_url }}" class="icon" />
-          <p class="subscript"><b>Eco-friendly & Natural</b></p>
+          <p class="subscript">
+            <b class="front">Eco-friendly & Natural</b>
+            <b class="back tac" style="display: none;">Low environmental impact</b>
+          </p>
         </div>
         <div class="two-thirds flex-container-no paca-flip-benefits">
           <img src="{{'ribbon.png' | asset_url }}" class="icon" />
-          <p class="subscript"><b>Gives Back</b></p>
+          <p class="subscript">
+            <b class="front">Gives Back</b>
+            <b class="back tac" style="display: none;">% of proceeds go to kids in hospitals</b>
+          </p>
         </div> 
         <div class="two-thirds flex-container-no paca-flip-benefits">
           <img src="{{'water.png' | asset_url}}" class="icon" />
-          <p class="subscript"><b>Thermoregulating & Waterproof</b></p>
+          <p class="subscript">
+            <b class="front">Thermoregulating & Waterproof</b>
+            <b class="back tac" style="display: none;">Provide insulation and moisture wicking</b>
+          </p>
         </div>
       </div>
     </div>
    </div>
 </section>
-<section class="page-header mo">
-  <div class="flex-container-no" id="mobile-sock">
-    <img src="{{'bombas_socksample.png' | asset_url }}" id="sock-sample" />
-    <div class="half">
-      <div class="flex-container-no">
-        <img src="{{'crown.png' | asset_url}}" class="icon" />
-        <p class="subscript"><b>Soft as Cashmere</b></p>
-      </div>
-      <div class="flex-container-no">
-        <img src="{{'leaf.png' | asset_url}}" class="icon" />
-        <p class="subscript"><b>Eco-friendly & Natural</b></p>
-      </div>
-      <div class="flex-container-no">
-        <img src="{{'flame.png' | asset_url}}" class="icon" />
-        <p class="subscript"><b>Warmer than Wool</b></p>
-      </div>
-      <div class="flex-container-no">
-       <img src="{{'ribbon.png' | asset_url }}" class="icon" />
-       <p class="subscript"><b>Gives Back</b></p>
-      </div>
-       <div class="half flex-container-no">
-          <img src="{{'poof.png' | asset_url}}" class="icon" />
-          <p class="subscript"><b>Non-itchy & Hypoallergenic</b></p>
-        </div>
-          <div class="half flex-container-no">
-          <img src="{{'water.png' | asset_url}}" class="icon" />
-          <p class="subscript"><b>Thermoregulating & Waterproof</b></p>
-        </div>
-    </div>
-  </div>
-    <div class="flex-container-no jes">
-      <p class="clickable"><b>Athletic</b></p>
-      <p class="current clickable"><b>Casual</b></p>
-      <p class="clickable"><b>Dress</b></p>
-    </div>
-</section>
+   <script>
+      $('.paca-flip-benefits').click(function() {
+        var height = $(this).height()
+        $(this).toggleClass('background-blue').toggleClass('jcc').css("height", height).find('img').toggle();
+        $(this).find('.front').toggle();
+        $(this).find('.back').toggle(); 
+      })
+    </script>
 <section class="flex-container-no double-padding" id="shop-all-cta">
   <div class="two-thirds tac">
     <h3>"The world's comfiest sock." - Chicago Times</h3>
-    <div class="ib">
-      <img src="{{'' | asset_url}}" class="shop-pacas">
-      <p>Shop Men</p>
-    </div>
-    <div class="ib">
-      <img src="{{'' | asset_url}}" class="shop-pacas">
-      <p>Shop Women</p>
-    </div>
-    <div class="ib">
-      <img src="{{'' | asset_url}}" class="shop-pacas">
-      <p>Shop Kids</p>
-    </div>
+    <div class="flex-container-no jes">
+      <div class="flex-container-no">
+        <img src="{{'shop-mens.png' | asset_url}}" class="shop-pacas">
+        <p>Shop Men</p>
+      </div>
+      <div class="flex-container-no">
+        <img src="{{'shop-women.png' | asset_url}}" class="shop-pacas">
+        <p>Shop Women</p>
+      </div>
+      <div class="flex-container-no">
+        <img src="{{'shop-kids.png' | asset_url}}" class="shop-pacas">
+        <p>Shop Kids</p>
+      </div>
+  </div>
   </div>
   <div class="third"></div>
 </section>
