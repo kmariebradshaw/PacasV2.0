@@ -49,40 +49,62 @@
         <p class="clickable" id="dress-socksample"><b>Dress</b></p>
       </div>
     </div>
-    <script>
- 
-    </script>
    <div class="half">
     <div class="accent-padding">
         <div class="two-thirds flex-container-no paca-flip-benefits">
           <img src="{{'crown.png' | asset_url}}" class="icon" />
-          <p class="subscript" data-flip-text="Sample Text"><b>Soft as Cashmere</b></p>
+          <p class="subscript">
+            <b class="front">Soft as Cashmere</b>
+            <b class="back tac" style="display: none;">Alpaca fleece is luxurious and rare</b>
+          </p>
         </div>
         <div class="two-thirds flex-container-no paca-flip-benefits">
           <img src="{{'poof.png' | asset_url}}" class="icon" />
-          <p class="subscript" data-flip-text="Sample Text"><b>Non-itchy & Hypoallergenic</b></p>
+          <p class="subscript">
+            <b class="front">Non-itchy & Hypoallergenic</b>
+            <b class="back tac" style="display: none;">Naturally smooth, grease free</b>
+          </p>
         </div>
         <div class="two-thirds flex-container-no paca-flip-benefits">
           <img src="{{'flame.png' | asset_url}}" class="icon" />
-          <p class="subscript" data-flip-text="Sample Text"><b>Warmer than Wool</b></p>
+          <p class="subscript">
+            <b class="front">Warmer than Wool</b>
+            <b class="back tac" style="display: none;">Trap more heat than sheep wool</b>
+          </p>
         </div>
         <div class="two-thirds flex-container-no paca-flip-benefits">
           <img src="{{'leaf.png' | asset_url }}" class="icon" />
-          <p class="subscript" data-flip-text="Alpacas have a low environmental impact."><b>Eco-friendly & Natural</b></p>
+          <p class="subscript">
+            <b class="front">Eco-friendly & Natural</b>
+            <b class="back tac" style="display: none;">Low environmental impact</b>
+          </p>
         </div>
         <div class="two-thirds flex-container-no paca-flip-benefits">
           <img src="{{'ribbon.png' | asset_url }}" class="icon" />
-          <p class="subscript" data-flip-text="% of proceeds go to dressing kids in hospitals"><b>Gives Back</b></p>
+          <p class="subscript">
+            <b class="front">Gives Back</b>
+            <b class="back tac" style="display: none;">% of proceeds go to kids in hospitals</b>
+          </p>
         </div> 
         <div class="two-thirds flex-container-no paca-flip-benefits">
           <img src="{{'water.png' | asset_url}}" class="icon" />
-          <p class="subscript" data-flip-text="Sample Text"><b>Thermoregulating & Waterproof</b></p>
+          <p class="subscript">
+            <b class="front">Thermoregulating & Waterproof</b>
+            <b class="back tac" style="display: none;">Provide insulation and moisture wicking</b>
+          </p>
         </div>
       </div>
     </div>
    </div>
 </section>
-
+   <script>
+      $('.paca-flip-benefits').click(function() {
+        var height = $(this).height()
+        $(this).toggleClass('background-blue').toggleClass('jcc').css("height", height).find('img').toggle();
+        $(this).find('.front').toggle();
+        $(this).find('.back').toggle(); 
+      })
+    </script>
 <section class="flex-container-no double-padding" id="shop-all-cta">
   <div class="two-thirds tac">
     <h3>"The world's comfiest sock." - Chicago Times</h3>
