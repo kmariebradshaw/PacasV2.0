@@ -236,6 +236,8 @@ img { max-width: 100%; }
     padding: 0 50px;
     justify-content: center;
   }
+  .flex-container-do { display: flex; align-items: center; }
+  #sock-preview-benefits { padding: 50px; }
  #account, #account-order, #account-addresses { margin: 50px auto; }
   #materials-grid { padding: 0 50px 50px 50px; }
   .faq { padding: 50px 100px !important; }
@@ -277,7 +279,18 @@ img { max-width: 100%; }
     box-sizing: border-box;
     display: none;
 }
-
+.paca-flip-benefits { height: 53px; }
+#sock-preview-benefits { padding: 0 20px 20px 20px; } 
+  #materials-grid > div, #materials-grid > img {
+    width: 100%;
+    max-width: 300px;
+    margin: 20px auto;
+    height: 300px;
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+#materials-grid > img { display: block; }
+  #materials-grid { padding: 20px; }
   #account-addresses .third, #account .third, #account-order .third{
     width: 100%;
     text-align: center;
@@ -561,8 +574,14 @@ footer form {
   background-color: #fdf3ed;
   box-sizing: border-box;
 } 
+
 #shop-all-cta .two-thirds .flex-container-no.jes{ margin-top: 50px; }
-.shop-pacas { width: 30px; }
+.shop-pacas {
+  width: 45px;
+  position: absolute;
+  margin-left: -45px;
+  margin-top: -9px;
+}
 #shop-all-cta {box-shadow: inset 0px 7px 17px -7px rgba(0,0,0,.2);}
 .paca-flip-benefits  {
     border: 2px solid #f5fcfc;
@@ -570,7 +589,12 @@ footer form {
     margin: 10px auto;
     padding: 0 20px;
 }
-
+.shop-wrapper {
+    border: 1px solid #7b8284;
+    border-radius: 80px; 
+     padding: 0 20px 0px 50px;
+}
+.shop-wrapper p { font-size: 10pt; }
  #cta { width: 190px; }
  #index .flex-container-no .icon { margin-right: 10px; }
 .sock-preview img {
