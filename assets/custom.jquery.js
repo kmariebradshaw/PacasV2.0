@@ -26,6 +26,18 @@ $('#sock-preview-benefits .right-arrow').click(function() {
     $('.sock-options p').siblings().removeClass('current').first().addClass('current')
   }
 })
+$('#sock-preview-benefits .left-arrow').click(function() {
+  var currentImage = $('#sock-preview-benefits .sock-images img:visible'); 
+  if ($(currentImage).prev().length > 0) {       
+    $(currentImage).hide().prev().show();
+    $('.sock-options .current').removeClass('current').prev().addClass('current')
+  }
+  else {
+    $(currentImage).hide()
+    $('#dress').show();
+    $('.sock-options p').siblings().removeClass('current').last().addClass('current')
+  }
+})
 // cruding with cookies 
 function createCookie(name,value,days) {
     var expires = "";
