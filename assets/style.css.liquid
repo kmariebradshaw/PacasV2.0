@@ -282,14 +282,7 @@ img { max-width: 100%; }
 }
 .paca-flip-benefits { height: 53px; }
 #sock-preview-benefits { padding: 0 20px 20px 20px; } 
-  #materials-grid > div, #materials-grid > img {
-    width: 100%;
-    max-width: 300px;
-    margin: 20px auto;
-    height: 300px;
-    box-sizing: border-box;
-    border-radius: 20px;
-}
+
 #materials-grid > img { display: block; }
   #materials-grid { padding: 20px; }
   #account-addresses .third, #account .third, #account-order .third{
@@ -335,6 +328,13 @@ img { max-width: 100%; }
     height: 200px;
     background-size: 75% !important;
 }
+  #materials-grid > div, #materials-grid > img{
+    width: 33%;
+    max-width: 300px;
+    height: 250px;
+    box-sizing: border-box;
+    margin: 5px;
+  }
 }
 @media only screen and (min-width: 589px) {
   .accent-padding { padding: 20px; }
@@ -376,6 +376,13 @@ img { max-width: 100%; }
     right: 20px;
     width: 30px;
   }
+    #materials-grid > div, #materials-grid > img{
+    width: 100%;
+    max-width: 300px;
+    margin: 20px auto;
+    height: 250px;
+    box-sizing: border-box;
+}
   #product-wrap .flex-container-no { padding-bottom:5px; }
   .customer form { padding: 0 10px; }
   footer ul:first-of-type { margin-right: 15px; }
@@ -575,7 +582,7 @@ footer form {
   background-color: #fdf3ed;
   box-sizing: border-box;
 } 
-
+#materials-grid div, #materials-grid > img { border-radius: 20px; }
 #shop-all-cta .two-thirds .flex-container-no.jes{ margin-top: 50px; }
 .shop-pacas {
   width: 45px;
